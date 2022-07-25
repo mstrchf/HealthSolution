@@ -17,18 +17,21 @@ import {
 import React, { useState } from "react";
 import DoctorsModal from "./DoctorsModal";
 
-function UserScreen() {
+function DoctorScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [chooseData, setChooseData] = useState();
+
+
   const changeModalVisible = (bool) => {
     setIsModalVisible(bool);
   };
-  const setData = (bool) => {
+  
+  const setData = (data) => {
     setChooseData(data);
   };
   return (
     <SafeAreaView style={{ marginHorizontal: 10 }}>
-      <Text>{chooseData}</Text>
+      {/* <Text>{chooseData}</Text> */}
       <ScrollView>
         {/* header */}
         <View style={styles.headerDetails}>
@@ -59,6 +62,7 @@ function UserScreen() {
           >
             Book An Appointment
           </Text>
+          {/* doctorsProfile */}
           <View style={styles.profile}>
             <Image
               source={require("../assets/cute.webp")}
@@ -73,9 +77,8 @@ function UserScreen() {
               <View>
                 <TouchableOpacity
                   onPress={() => changeModalVisible(true)}
-                  style={{ backgroundColor: "red", paddingHorizontal: 50 }}
                 >
-                  <Text style={{ color: "blue", fontSize: 20 }}>Book Now</Text>
+                  <Text style={{color: 'grey',fontWeight:'800'}}>Book Now</Text>
                 </TouchableOpacity>
               </View>
               <Modal
@@ -84,6 +87,7 @@ function UserScreen() {
                 visible={isModalVisible}
                 nRequestClose={() => changeModalVisible(false)}
               >
+                {/* doctorsModal */}
                 <DoctorsModal
                   changeModalVisible={changeModalVisible}
                   setData={setData}
@@ -91,6 +95,9 @@ function UserScreen() {
               </Modal>
             </View>
           </View>
+          {/*  */}
+          
+          
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -115,4 +122,4 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-export default UserScreen;
+export default DoctorScreen;

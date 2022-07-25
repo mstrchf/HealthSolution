@@ -21,7 +21,7 @@ function Login({ navigation }) {
           <Text style={{ fontSize: 29, color: "#ffff", marginRight: 130 }}>
             Perfect HealthCare Solution
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Doctors")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Doctor")}>
             {/* <Text
               style={{
                 fontWeight: "bold",

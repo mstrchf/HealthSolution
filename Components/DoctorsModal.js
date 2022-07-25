@@ -4,38 +4,53 @@ import {
   View,
   Dimensions,
   Text,
+  Image
 } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 function DoctorsModal(props) {
-  // const WIDTH = Dimensions.get("window").width;
-  // const HEIGHT_MODAL = 150;
+  const navigation = useNavigation();
   
     closeModal = (bool, data) => {
       props.changeModalVisible(bool);
       props.setData(data);
+      navigation.navigate('user');
+      
     };
+    // openModal
+    // openModal = (bool, data) => {
+    //   props.changeModalVisible(bool);
+    //   props.setData(data);
+    //   navigation.navigate('user');
+      
+    // };
+    
   
   return (
     <TouchableOpacity disabled={true} style={styles.container}>
       <View style={styles.background}>
-        <View>
-          <Text>hello world</Text>
-          <Text>hello from nyima</Text>
+        <View style={styles.profile}>
+          <Image source={require('../assets/cute.webp')}  style={{width:50,height:50,borderRadius:50}}/>
+          <View style={{alignItems: 'center',paddingTop: 18}}>
+          <Text style={{color: 'white', paddingBottom:10}} >Dr. Ebrima Sow</Text>
+          <Text style={{color: 'white', paddingBottom:10}}>Fajara Hospital</Text>
+          <Text style={{color: 'white', paddingBottom:10}}>8:00AM TO 5:00PM</Text>
+          <Text style={{color: 'white', paddingTop:22}}>Continue For Your Appointment Booking</Text>
+          </View>
+    
         </View>
+        {/* buttonsecion */}
+        <View style={styles.button} >
         {/*cancelbutton  */}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            padding: 20,
-          }}
-        >
-          <TouchableOpacity onPress={() => closeModal(false, "Cancel")}>
-            <Text>Cancel</Text>
+          <TouchableOpacity 
+          onPress={() => closeModal(false, "Cancel")}>
+            <Text  style={{fontWeight: '800', color: 'white'}}>Cancel</Text>
           </TouchableOpacity>
-          {/*okbutton */}
-          <TouchableOpacity onPress={() => closeModal(false, "Ok ")}>
-            <Text>Ok</Text>
+          {/*Continuebutton */}
+          <TouchableOpacity
+           onPress={() => closeModal(false, "Continue")}           
+           >
+            <Text style={{fontWeight: '800', color: 'white'}}>Continue</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -47,15 +62,26 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    paddingTop: 80
+    
   },
-  background: {
-    backgroundColor: "green",
-    width: 200,
-    height: 200,
-    borderRadius: 15,
-    paddingTop: 10,
-    // width: WIDTH - 80,
-    // height: HEIGHT_MODAL,
+  background:{
+    backgroundColor: 'grey',
+    width:300,
+    height:400,
+    borderRadius:15,
   },
+  profile:{
+    alignItems:"center",
+    padding: 30
+
+  },
+  button:{
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding:20,
+    marginTop:10,
+
+  }
 });
 export default DoctorsModal;
