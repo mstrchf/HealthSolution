@@ -6,13 +6,14 @@ import {
   StyleSheet,
   ImageBackground,
 } from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
-function Login() {
+function Login({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
-      {/* bacground imahe */}
+      {/* bacground image */}
       <ImageBackground
-        source={require("../assets/doc.webp")}
+        source={require("../assets/cot.webp")}
         style={styles.bgImage}
       >
         {/* text and start button */}
@@ -20,11 +21,11 @@ function Login() {
           <Text style={{ fontSize: 29, color: "#ffff", marginRight: 130 }}>
             Perfect HealthCare Solution
           </Text>
-          <TouchableOpacity>
-            <Text
+          <TouchableOpacity onPress={() => navigation.navigate("Doctors")}>
+            {/* <Text
               style={{
                 fontWeight: "bold",
-                marginTop: 450,
+                marginTop: 370,
                 backgroundColor: "pink",
                 height: 60,
                 textAlign: "center",
@@ -33,9 +34,24 @@ function Login() {
                 padding: 15,
                 color: "#ffff",
               }}
-            >
-              Get Started
-            </Text>
+            > */}
+            <AntDesign
+              name="arrowright"
+              size={24}
+              color="white"
+              style={{
+                fontWeight: "bold",
+                marginTop: 370,
+                backgroundColor: "pink",
+                height: 60,
+                textAlign: "center",
+                width: 150,
+                borderRadius: 15,
+                padding: 15,
+              }}
+            />
+            {/* Get Started */}
+            {/* </Text> */}
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -49,9 +65,12 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
+    resizeMode: "cover",
   },
   content: {
-    alignItems: "center",
+    // alignItems: "center",
+    marginLeft: 40,
+    justifyContent: "space-between",
     paddingTop: 70,
   },
 });
