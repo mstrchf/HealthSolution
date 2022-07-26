@@ -1,6 +1,6 @@
 import { SafeAreaView, View , Text, StyleSheet, TouchableOpacity, TextInput} from "react-native";
 
-function UserDetail(){
+function UserDetail({navigation}){
     return(
         <SafeAreaView style={{marginHorizontal: 10}}>
             <View style={styles.text}>
@@ -32,7 +32,7 @@ function UserDetail(){
             <View>
                 <TextInput 
                 style={{borderWidth: 0.5,height:50, margin: 10,padding:15, borderRadius: 10}}
-                placeholder="Password"
+                placeholder="Address"
                 />
             </View>
            
@@ -52,7 +52,7 @@ function UserDetail(){
             </View>
 
             {/* submitbutton */}
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Doctors')}>
                 <Text style={styles.submit}>Submit</Text>
             </TouchableOpacity>
         </SafeAreaView>
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         height:60, 
         width:150,
         paddingLeft: 40,
-        paddingTop:10,
+        paddingTop:16,
         borderRadius: 15,
         color: 'white',
         fontWeight: 'bold',

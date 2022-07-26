@@ -1,9 +1,12 @@
 // import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
 import Login from "./Components/Login";
+import Verification from "./Components/Verification";
 import DoctorScreen from "./Components/DoctorScreen";
 import UserDetail from "./Components/UserDetail";
-// import DoctorsScreen from "./Components/DoctorsScreen";
+import DoctorProfile from "./Components/DoctorProfile";
+import Adminisrator from "./Components/Administrator";
+
 
 // import UserScreen from "./Components/DoctorScreen";
 // Navigation
@@ -17,9 +20,11 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Login" component={Login} />
-        {/* <Stack.Screen name="Doctors" component={DoctorsScreen} /> */}
+        {/* <Stack.Screen name="Doctor" component={DoctorScreen} /> */}
         <Stack.Screen name="Doctor" component={DoctorScreen} />
         <Stack.Screen name="user" component={UserDetail}/>
+        <Stack.Screen name="Doctors" component={DoctorProfile}/>
+        <Stack.Screen name="admin" component={Adminisrator}/>
       </Stack.Navigator>
 
       {/* <Login />
