@@ -6,6 +6,8 @@ import DoctorScreen from "./Components/DoctorScreen";
 import UserDetail from "./Components/UserDetail";
 import DoctorProfile from "./Components/DoctorProfile";
 import Adminisrator from "./Components/Administrator";
+import EntryScreen from "./Components/EntryScreen";
+import DoctorsPortal from "./Components/DoctorsPortal";
 
 
 // import UserScreen from "./Components/DoctorScreen";
@@ -25,10 +27,11 @@ export default function App() {
         <Stack.Screen name="user" component={UserDetail}/>
         <Stack.Screen name="Doctors" component={DoctorProfile}/>
         <Stack.Screen name="admin" component={Adminisrator}/>
+        <Stack.Screen name="entry" component={EntryScreen}/>
+        <Stack.Screen name="doctorsportal" component={DoctorsPortal}/>
       </Stack.Navigator>
 
-      {/* <Login />
-      <Appoint /> */}
+     
     </NavigationContainer>
   );
 }
