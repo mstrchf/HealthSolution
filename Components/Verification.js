@@ -1,12 +1,12 @@
-import {Text, View ,TouchableOpacity} from 'react';
+import { Text, View, TouchableOpacity } from "react";
 
-function Verification(){
-    return(
-        <View>
-        <TouchableOpacity>
+function Verification() {
+  return (
+    <View>
+      <TouchableOpacity>
         <Text>hello</Text>
-        </TouchableOpacity>
-        </View>
-    )
+      </TouchableOpacity>
+    </View>
+  );
 }
 export default Verification;

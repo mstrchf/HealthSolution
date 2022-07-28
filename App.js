@@ -9,7 +9,6 @@ import Adminisrator from "./Components/Administrator";
 import EntryScreen from "./Components/EntryScreen";
 import DoctorsPortal from "./Components/DoctorsPortal";
 
-
 // import UserScreen from "./Components/DoctorScreen";
 // Navigation
 import { NavigationContainer } from "@react-navigation/native";
@@ -24,14 +23,12 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         {/* <Stack.Screen name="Doctor" component={DoctorScreen} /> */}
         <Stack.Screen name="Doctor" component={DoctorScreen} />
-        <Stack.Screen name="user" component={UserDetail}/>
-        <Stack.Screen name="Doctors" component={DoctorProfile}/>
-        <Stack.Screen name="admin" component={Adminisrator}/>
-        <Stack.Screen name="entry" component={EntryScreen}/>
-        <Stack.Screen name="doctorsportal" component={DoctorsPortal}/>
+        <Stack.Screen name="user" component={UserDetail} />
+        <Stack.Screen name="Doctors" component={DoctorProfile} />
+        <Stack.Screen name="admin" component={Adminisrator} />
+        <Stack.Screen name="entry" component={EntryScreen} />
+        <Stack.Screen name="doctorsportal" component={DoctorsPortal} />
       </Stack.Navigator>
-
-     
     </NavigationContainer>
   );
 }
