@@ -2,9 +2,9 @@ import { SafeAreaView, View , Text, StyleSheet, TouchableOpacity, TextInput} fro
 
 function UserDetail({navigation}){
     return(
-        <SafeAreaView style={{marginHorizontal: 10}}>
+        <SafeAreaView style={{marginHorizontal: 10, flex: 1}}>
             <View style={styles.text}>
-                <Text style={{fontWeight: 'bold', fontSize: 18,paddingBottom:20}}>Book an Appointment</Text>
+                <Text style={{fontWeight: 'bold', fontSize: 18,paddingBottom:35}}>Book an Appointment</Text>
                 <Text>Please Fill Out The Form Below To Make An </Text>
                 <Text style={{paddingBottom:30}}>Appointment</Text>
             </View>
@@ -52,7 +52,7 @@ function UserDetail({navigation}){
             </View>
 
             {/* submitbutton */}
-            <TouchableOpacity onPress={() => navigation.navigate('Doctors')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Doctors Account')}>
                 <Text style={styles.submit}>Submit</Text>
             </TouchableOpacity>
         </SafeAreaView>
@@ -62,7 +62,7 @@ function UserDetail({navigation}){
 const styles = StyleSheet.create({
     text:{
         alignItems: 'center',
-        paddingTop: 20
+        paddingTop: 70
     },
     submit:{
         alignSelf: 'center',

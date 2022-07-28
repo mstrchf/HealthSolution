@@ -17,7 +17,7 @@ function Adminisrator({ navigation }) {
           <ImageBackground
             source={require("../assets/test.webp")}
             style={{
-              width: 400,
+              
               height: 300,
               borderRadius: 10,
               resizeMode: "contain",
@@ -30,9 +30,9 @@ function Adminisrator({ navigation }) {
                   color: "pink",
                   fontWeight: "800",
                   alignSelf: "flex-end",
-                  padding: 20,
+                  paddingTop: 50,
                   fontSize: 16,
-                  marginRight: 10,
+                  marginRight: 25,
                 }}
               >
                 Add
@@ -151,12 +151,14 @@ function Adminisrator({ navigation }) {
 }
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 10,
+    flex: 1
   },
   profile: {
     flexDirection: "row",
     padding: 20,
     borderBottomWidth: 0.2,
+    marginHorizontal: 10,
+
   },
   button: {
     flexDirection: "row",

@@ -1,10 +1,17 @@
-import {View,Text, ImageBackground, TextInput, StyleSheet, TouchableOpacity} from 'react-native'
+import {View,Text, ImageBackground, TextInput, StyleSheet, TouchableOpacity, SafeAreaView} from 'react-native';
+import {AntDesign} from '@expo/vector-icons';
 function EntryScreen({navigation}){
     return(
-        <View>
+        <SafeAreaView style={{flex: 1}}>
             <ImageBackground source={require('../assets/admin.jpg')} resizeMode='cover' style={{height: '100%'}}>
+                <View style={styles.header}>
+                <Text style={{fontWeight: '800', fontSize: 17}}>Doctors Detail</Text>
+                <TouchableOpacity   onPress={() => navigation.navigate('doctorsportal')}  > 
+                <AntDesign name="arrowright" size={30} color="black" />
+                </TouchableOpacity>
+                </View>
                 <View style={styles.input}>
-                <Text style={{fontWeight: '800', fontSize: 17, alignSelf: 'center', paddingBottom: 50}}>Doctors Detail</Text>
+
                 {/* name */}
                 <View style={styles.inputText}>
                 <TextInput placeholder='Doctor Name ' style={{fontWeight: '600', fontSize: 16}}/>
@@ -36,12 +43,12 @@ function EntryScreen({navigation}){
 
 
                 {/* TouchableOpacity */}
-                <TouchableOpacity  onPress={() => navigation.navigate('doctorsportal')} style={{marginTop: 30}}>
+                <TouchableOpacity style={{marginTop: 30}}>
                     <Text style={styles.completebutton}>Complete</Text>
                 </TouchableOpacity>
             </ImageBackground>
             
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -65,6 +72,12 @@ function EntryScreen({navigation}){
            fontWeight: 'bold',
            color: 'white'
 
+    },
+    header:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        padding: 25,
+        marginTop:70
     }
  })
 export default EntryScreen;

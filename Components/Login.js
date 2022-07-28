@@ -18,23 +18,10 @@ function Login({ navigation }) {
       >
         {/* text and start button */}
         <View style={styles.content}>
-          <Text style={{ fontSize: 29, color: "#ffff", marginRight: 130 }}>
+          <Text style={{ fontSize: 29, color: "#ffff", marginRight: 130, paddingTop: 40 }}>
             Perfect HealthCare Solution
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Doctor")}>
-            {/* <Text
-              style={{
-                fontWeight: "bold",
-                marginTop: 370,
-                backgroundColor: "pink",
-                height: 60,
-                textAlign: "center",
-                width: 200,
-                borderRadius: 15,
-                padding: 15,
-                color: "#ffff",
-              }}
-            > */}
+          <TouchableOpacity onPress={() => navigation.navigate("Verify")}>
             <AntDesign
               name="arrowright"
               size={24}
@@ -50,8 +37,7 @@ function Login({ navigation }) {
                 padding: 15,
               }}
             />
-            {/* Get Started */}
-            {/* </Text> */}
+            
           </TouchableOpacity>
         </View>
       </ImageBackground>

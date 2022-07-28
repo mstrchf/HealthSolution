@@ -17,6 +17,8 @@ import {
 import React, { useState } from "react";
 import DoctorsModal from "./DoctorsModal";
 
+
+
 function DoctorScreen() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [chooseData, setChooseData] = useState();
@@ -30,16 +32,18 @@ function DoctorScreen() {
     setChooseData(data);
   };
   return (
-    <SafeAreaView style={{ marginHorizontal: 10 }}>
+    <SafeAreaView style={{ marginHorizontal: 10 , flex: 1}}>
       {/* <Text>{chooseData}</Text> */}
       <ScrollView>
         {/* header */}
         <View style={styles.headerDetails}>
-          <Ionicons name="menu" size={29} color="black" />
-          <Text style={{ fontSize: 17, fontWeight: "800" }}>
+          <TouchableOpacity >
+          <Ionicons name="menu" size={30} color="black"  />
+          </TouchableOpacity>
+          <Text style={{ fontSize: 17, fontWeight: "800",marginRight: 40 }}>
             Find Your Doctor
           </Text>
-          <AntDesign name="left" size={29} color="black" />
+          
         </View>
         {/* icons on specializations */}
         <View style={styles.icons}>
@@ -109,6 +113,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 10,
+    marginTop: 50,
+    marginBottom: 15
   },
   icons: {
     flexDirection: "row",
