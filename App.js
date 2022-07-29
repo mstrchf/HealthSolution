@@ -15,15 +15,14 @@ import DoctorsPortal from "./Components/DoctorsPortal";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+
 // stack navigator and screen
 const Stack = createNativeStackNavigator();
 
+// 
+
+
 export default function App() {
-
-
-
-
-
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
