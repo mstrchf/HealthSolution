@@ -29,7 +29,7 @@ function Login({ navigation }) {
               style={{
                 fontWeight: "bold",
                 marginTop: 370,
-                backgroundColor: "pink",
+                backgroundColor: 'pink',
                 height: 60,
                 textAlign: "center",
                 width: 150,

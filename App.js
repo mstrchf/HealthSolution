@@ -8,18 +8,19 @@ import DoctorProfile from "./Components/DoctorProfile";
 import Adminisrator from "./Components/Administrator";
 import EntryScreen from "./Components/EntryScreen";
 import DoctorsPortal from "./Components/DoctorsPortal";
-
-
-// import UserScreen from "./Components/DoctorScreen";
+import DrawerContent from "./Components/DrawerContent";
 // Navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 
+
 // stack navigator and screen
 const Stack = createNativeStackNavigator();
+const Drawer = createDrawerNavigator();
 
-// 
+
+
 
 
 export default function App() {
@@ -34,7 +35,8 @@ export default function App() {
         <Stack.Screen name="Doctors Account" component={DoctorProfile} />
         <Stack.Screen name="admin" component={Adminisrator} />
         <Stack.Screen name="entry" component={EntryScreen} />
-        <Stack.Screen name="doctorsportal" component={DoctorsPortal} />
+        <Stack.Screen name="doctorsportal" component={DoctorsPortal}/>
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

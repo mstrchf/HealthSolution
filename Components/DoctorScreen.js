@@ -40,9 +40,11 @@ function DoctorScreen() {
           <TouchableOpacity >
           <Ionicons name="menu" size={30} color="black"  />
           </TouchableOpacity>
-          <Text style={{ fontSize: 17, fontWeight: "800",marginRight: 40 }}>
+          <Text style={{ fontSize: 17, fontWeight: "800"}}>
             Find Your Doctor
           </Text>
+            
+          <MaterialCommunityIcons name="dots-vertical" size={24} color="black" />
           
         </View>
         {/* icons on specializations */}
@@ -68,23 +70,24 @@ function DoctorScreen() {
           </Text>
           {/* doctorsProfile */}
           <View style={styles.profile}>
-            <Image
+            <TouchableOpacity onPress={() => changeModalVisible(true)} >
+            <Image 
               source={require("../assets/cute.webp")}
               style={{ width: 50, height: 50, borderRadius: 50 }}
             />
+            </TouchableOpacity>
             <View style={{ marginLeft: 30 }}>
+              {/* onpres to show the modal */}
+            <TouchableOpacity onPress={() => changeModalVisible(true)}>
               <Text style={{ fontWeight: "700", fontSize: 15 }}>
                 Dr. Ebrima Sow
               </Text>
               <Text style={{ fontWeight: "400", fontSize: 15 }}>Medicine</Text>
               {/*modal*/}
-              <View>
-                <TouchableOpacity
-                  onPress={() => changeModalVisible(true)}
-                >
+              {/* <View> */}
                   <Text style={{color: 'grey',fontWeight:'800'}}>Book Now</Text>
                 </TouchableOpacity>
-              </View>
+              {/* </View> */}
               <Modal
                 transparent={true}
                 animationType="fade"
@@ -112,15 +115,15 @@ const styles = StyleSheet.create({
   headerDetails: {
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 10,
-    marginTop: 50,
-    marginBottom: 15
+
+    marginTop: 60,
+    marginBottom: 30
   },
   icons: {
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 20,
-    backgroundColor: "pink",
+    backgroundColor: "#41c1f9",
     borderRadius: 15,
   },
   profile: {

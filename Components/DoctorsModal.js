@@ -44,13 +44,13 @@ function DoctorsModal(props) {
         {/*cancelbutton  */}
           <TouchableOpacity 
           onPress={() => closeModal(false, "Cancel")}>
-            <Text  style={{fontWeight: '800', color: 'white'}}>Cancel</Text>
+            <Text  style={{fontWeight: 'bold', color: '#41c1f9'}}>Cancel</Text>
           </TouchableOpacity>
           {/*Continuebutton */}
           <TouchableOpacity
            onPress={() => closeModal(false, "Continue")}           
            >
-            <Text style={{fontWeight: '800', color: 'white'}}>Continue</Text>
+            <Text style={{fontWeight: 'bold', color: '#41c1f9'}}>Continue</Text>
           </TouchableOpacity>
         </View>
       </View>

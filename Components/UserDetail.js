@@ -1,8 +1,10 @@
-import { SafeAreaView, View , Text, StyleSheet, TouchableOpacity, TextInput} from "react-native";
+import { SafeAreaView, View , Text, StyleSheet, TouchableOpacity, TextInput, ScrollView} from "react-native";
 
 function UserDetail({navigation}){
     return(
+
         <SafeAreaView style={{marginHorizontal: 10, flex: 1}}>
+            <ScrollView>
             <View style={styles.text}>
                 <Text style={{fontWeight: 'bold', fontSize: 18,paddingBottom:35}}>Book an Appointment</Text>
                 <Text>Please Fill Out The Form Below To Make An </Text>
@@ -55,6 +57,7 @@ function UserDetail({navigation}){
             <TouchableOpacity onPress={() => navigation.navigate('Doctors Account')}>
                 <Text style={styles.submit}>Submit</Text>
             </TouchableOpacity>
+            </ScrollView>
         </SafeAreaView>
 
     )
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
     },
     submit:{
         alignSelf: 'center',
-        backgroundColor: 'pink',
+        backgroundColor: '#41c1f9',
         height:60, 
         width:150,
         paddingLeft: 40,

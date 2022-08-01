@@ -63,7 +63,7 @@ function EntryScreen({navigation}){
     },
     completebutton:{
         alignItems:'center',
-        backgroundColor: 'pink',
+        backgroundColor: '#41c1f9',
          width: 150, height: 60,
           alignSelf: 'center', 
           paddingLeft: 35,

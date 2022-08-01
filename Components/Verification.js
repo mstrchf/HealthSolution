@@ -1,9 +1,10 @@
-import { TouchableOpacity , Text, View, ImageBackground, TextInput, StyleSheet, SafeAreaView} from "react-native";
-import {AntDesign} from '@expo/vector-icons';
+import { TouchableOpacity , Text, View, ImageBackground, TextInput, StyleSheet, SafeAreaView, ScrollView} from "react-native";
+import {Entypo,AntDesign} from '@expo/vector-icons';
 
 function Verification({navigation}){
   return(
     <SafeAreaView style={{flex: 1, marginTop: 20}}>
+      <ScrollView >
       {/* backgroungImage */}
       <ImageBackground source={require('../assets/imo.webp')} style={{width: '100%' ,height: 330}}>
         {/* arrow with sin up */}
@@ -17,14 +18,16 @@ function Verification({navigation}){
       {/* inputs */}
       <View style={styles.getAccount}>
       <Text style={{fontWigeht: '700'}}>Don't Have An Account?</Text>
-      <Text style={{fontWigeht: '600'}}>Get One</Text>
+      <Text style={{fontWeight: 'bold', color: '#41c1f9'}}>Get One</Text>
       </View>
       <View style={styles.signUp}>
         <View  style={styles.input}>
-        <TextInput placeholder="Email" />
+          <AntDesign name="user" size={25}/>
+        <TextInput placeholder="Email"style={{marginLeft: 25}}/>
         </View>
         <View style={styles.input}>
-        <TextInput placeholder="Password" />
+        <Entypo name="lock" size={25}/>
+        <TextInput placeholder="Password" secureTextEntry={true}style={{marginLeft: 25}}/>
         </View>
        <View style={styles.signIn}>
         <TouchableOpacity>
@@ -32,6 +35,7 @@ function Verification({navigation}){
         </TouchableOpacity>
        </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
 
   )
@@ -46,8 +50,9 @@ function Verification({navigation}){
     padding:10
   },
   input:{
+       flexDirection: 'row',
        borderWidth: 0.5,
-       height: 60,
+       height: 65,
        padding: 20,
        marginTop: 40, 
        borderRadius: 15,
@@ -65,7 +70,7 @@ function Verification({navigation}){
     borderRadius: 15,
     alignItems: 'center',
     paddingTop: 15,
-    backgroundColor: 'pink',
+    backgroundColor: '#41c1f9',
     marginTop:70
     
   }

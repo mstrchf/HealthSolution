@@ -56,13 +56,13 @@ function Adminisrator({ navigation }) {
         <View style={styles.button}>
           {/* remove button */}
           <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "pink", fontWeight: "800", marginLeft: 80 }}>
+            <Text style={{ color: "#41c1f9", fontWeight: "800", marginLeft: 80 }}>
               Remove
             </Text>
           </TouchableOpacity>
           {/* enable button */}
           <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "pink", fontWeight: "800", marginRight: 20 }}>
+            <Text style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}>
               Enable
             </Text>
           </TouchableOpacity>
@@ -82,13 +82,13 @@ function Adminisrator({ navigation }) {
         <View style={styles.button}>
           {/* remove button */}
           <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "pink", fontWeight: "800", marginLeft: 80 }}>
+            <Text style={{ color: "#41c1f9", fontWeight: "800", marginLeft: 80 }}>
               Remove
             </Text>
           </TouchableOpacity>
           {/* enable button */}
           <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "pink", fontWeight: "800", marginRight: 20 }}>
+            <Text style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}>
               Enable
             </Text>
           </TouchableOpacity>
@@ -108,13 +108,13 @@ function Adminisrator({ navigation }) {
         <View style={styles.button}>
           {/* remove button */}
           <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "pink", fontWeight: "800", marginLeft: 80 }}>
+            <Text style={{ color: "#41c1f9", fontWeight: "800", marginLeft: 80 }}>
               Remove
             </Text>
           </TouchableOpacity>
           {/* enable button */}
           <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "pink", fontWeight: "800", marginRight: 20 }}>
+            <Text style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}>
               Enable
             </Text>
           </TouchableOpacity>
@@ -134,13 +134,13 @@ function Adminisrator({ navigation }) {
         <View style={styles.button}>
           {/* remove button */}
           <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "pink", fontWeight: "800", marginLeft: 80 }}>
+            <Text style={{ color: "#41c1f9", fontWeight: "800", marginLeft: 80 }}>
               Remove
             </Text>
           </TouchableOpacity>
           {/* enable button */}
           <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "pink", fontWeight: "800", marginRight: 20 }}>
+            <Text style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}>
               Enable
             </Text>
           </TouchableOpacity>

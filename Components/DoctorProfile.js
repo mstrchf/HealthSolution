@@ -16,13 +16,13 @@ function DoctorProfile({navigation}){
             {/* recent update */}
             <View style={styles.recentUpdate}>
                 <TouchableOpacity>
-                <MaterialCommunityIcons name='refresh' size={30} style={{alignSelf: 'center', color: 'pink',}}/>    
-                <Text style={{fontWeight: 'bold', fontSize: 15, color: 'pink'}}>Recent Bookings</Text>
+                <MaterialCommunityIcons name='refresh' size={30} style={{alignSelf: 'center', color: '#41c1f9',}}/>    
+                <Text style={{fontWeight: 'bold', fontSize: 15, color: '#41c1f9'}}>Recent Bookings</Text>
                 </TouchableOpacity>
                 {/* Hanging request */}
                 <TouchableOpacity>
                 <Entypo name='lock-open' size={30} style={{alignSelf: 'center' ,color: 'pink'}}/>    
-                <Text style={{fontWeight: 'bold', fontSize: 15, color: 'pink'}}>Hanging Bookings</Text>
+                <Text style={{fontWeight: 'bold', fontSize: 15, color: '#41c1f9'}}>Hanging Bookings</Text>
                 </TouchableOpacity>
             </View>
             {/* patient booking */}
