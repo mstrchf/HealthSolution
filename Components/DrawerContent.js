@@ -3,7 +3,7 @@ import {Ionicons} from '@expo/vector-icons';
 
 
 
-function DrawerContent({props}){
+function DrawerContent(){
     return(
         <View>
             <Text>Home</Text>

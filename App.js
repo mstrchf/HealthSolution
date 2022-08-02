@@ -12,12 +12,27 @@ import DrawerContent from "./Components/DrawerContent";
 // Navigation
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+// Drawer Navigation
+// import { createDrawerNavigator } from "@react-navigation/drawer";
 
 
 
 // stack navigator and screen
 const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
+
+// Drawer navigator and screen
+// const Drawer = createDrawerNavigator();
+
+
+// Drawer funcion
+// const Home = () => {
+//   return(
+//     <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props}/>}>
+//       <Drawer.Screen name='DoctorScreen' component={DoctorScreen}/>
+//       <Drawer.Screen name="DoctorsPortal" component={DoctorsPortal}/>
+//     </Drawer.Navigator>
+//   )
+// }
 
 
 

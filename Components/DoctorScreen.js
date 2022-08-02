@@ -16,6 +16,7 @@ import {
 } from "@expo/vector-icons";
 import React, { useState } from "react";
 import DoctorsModal from "./DoctorsModal";
+import {Searchbar} from 'react-native-paper';
 
 
 
@@ -37,8 +38,8 @@ function DoctorScreen() {
       <ScrollView>
         {/* header */}
         <View style={styles.headerDetails}>
-          <TouchableOpacity >
-          <Ionicons name="menu" size={30} color="black"  />
+          <TouchableOpacity>
+          <Ionicons name="menu" size={30} color="black"/>
           </TouchableOpacity>
           <Text style={{ fontSize: 17, fontWeight: "800"}}>
             Find Your Doctor
@@ -47,7 +48,10 @@ function DoctorScreen() {
           <MaterialCommunityIcons name="dots-vertical" size={24} color="black" />
           
         </View>
+        <Searchbar placeholder="Search" style={{borderRadius: 10, marginBottom:20}}/>
+
         {/* icons on specializations */}
+        <TouchableOpacity>
         <View style={styles.icons}>
           <Ionicons name="heart-circle" size={24} color="#ffff" />
           <Ionicons name="eye" size={24} color="#ffff" />
@@ -55,6 +59,7 @@ function DoctorScreen() {
           <FontAwesome5 name="tooth" size={24} color="#ffff" />
           <MaterialCommunityIcons name="pill" size={30} color="#ffff" />
         </View>
+        </TouchableOpacity>
         {/* doctors profile */}
         <View>
           <Text
@@ -102,9 +107,9 @@ function DoctorScreen() {
               </Modal>
             </View>
           </View>
-          {/*  */}
           
           
+
         </View>
       </ScrollView>
     </SafeAreaView>

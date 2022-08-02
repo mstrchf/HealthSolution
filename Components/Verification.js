@@ -1,7 +1,20 @@
-import { TouchableOpacity , Text, View, ImageBackground, TextInput, StyleSheet, SafeAreaView, ScrollView} from "react-native";
+import { TouchableOpacity , Text, View, ImageBackground, TextInput, StyleSheet, SafeAreaView, ScrollView , ActivityIndicator} from "react-native";
 import {Entypo,AntDesign} from '@expo/vector-icons';
+import {useState} from "react";
 
 function Verification({navigation}){
+  const [loading , setLoading] = useState(false);
+
+// activity indicator logic
+const Indicate = () => {
+  if(loading === true){
+      setLoading(false);
+  }else{
+      setLoading(true);
+  }
+}
+
+
   return(
     <SafeAreaView style={{flex: 1, marginTop: 20}}>
       <ScrollView >
@@ -29,11 +42,17 @@ function Verification({navigation}){
         <Entypo name="lock" size={25}/>
         <TextInput placeholder="Password" secureTextEntry={true}style={{marginLeft: 25}}/>
         </View>
+
+        {/* sign in and loading */}
+        <View>
+        <ActivityIndicator size='large'  animating={loading} color='blue' style={styles.ActivityIndicator}/>
        <View style={styles.signIn}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={Indicate}>
           <Text style={{fontWeight: 'bold', color: 'white'}}>Sign In</Text>
         </TouchableOpacity>
        </View>
+       </View>
+       {/*  */}
       </View>
       </ScrollView>
     </SafeAreaView>
@@ -71,8 +90,11 @@ function Verification({navigation}){
     alignItems: 'center',
     paddingTop: 15,
     backgroundColor: '#41c1f9',
-    marginTop:70
+    marginTop:50
     
+  },
+  ActivityIndicator:{
+    top:15
   }
  
  })

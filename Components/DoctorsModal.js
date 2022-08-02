@@ -16,14 +16,7 @@ function DoctorsModal(props) {
       props.setData(data);
       navigation.navigate('user');
       
-    };
-    // openModal
-    // openModal = (bool, data) => {
-    //   props.changeModalVisible(bool);
-    //   props.setData(data);
-    //   navigation.navigate('user');
-      
-    // };
+    }
     
   
   return (
