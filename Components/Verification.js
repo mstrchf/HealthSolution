@@ -1,18 +1,58 @@
 import { TouchableOpacity , Text, View, ImageBackground, TextInput, StyleSheet, SafeAreaView, ScrollView , ActivityIndicator} from "react-native";
 import {Entypo,AntDesign} from '@expo/vector-icons';
 import {useState} from "react";
+import axios from "axios";
 
 function Verification({navigation}){
+  
+// const Items = {
+//   username: "",
+//   password: "",
+// }
+
   const [loading , setLoading] = useState(false);
+  const [input, setInput] = useState({})
+  const [password, setpassword] = useState({})
+
 
 // activity indicator logic
-const Indicate = () => {
-  if(loading === true){
-      setLoading(false);
-  }else{
-      setLoading(true);
-  }
+// const Indicate = () => {
+//   if(loading === true){
+//       setLoading(false);
+//   }else{
+//       setLoading(true);
+//   }
+// }
+
+
+const HandleClick = () =>{
+  axios({
+    method: 'post',
+    url: 'http://172.23.45.149:7222/api/Login/Login',
+    data:{
+      username: 'hi@gmail.com',
+      password: '123n',
+    }
+  })
+  .then((Response)=>{
+     console.log(Response.data);
+  })
+  .catch((error)=>{
+    console.log(error.data);
+
+  })
 }
+
+// submit
+const HandleChange= () =>{
+  setInput(input)
+
+
+  //setInput(...input.event.target.value);
+
+}
+
+
 
 
   return(
@@ -31,23 +71,40 @@ const Indicate = () => {
       {/* inputs */}
       <View style={styles.getAccount}>
       <Text style={{fontWigeht: '700'}}>Don't Have An Account?</Text>
+      <TouchableOpacity>
       <Text style={{fontWeight: 'bold', color: '#41c1f9'}}>Get One</Text>
+      </TouchableOpacity>
       </View>
+      {/* username */}
       <View style={styles.signUp}>
         <View  style={styles.input}>
           <AntDesign name="user" size={25}/>
-        <TextInput placeholder="Email"style={{marginLeft: 25}}/>
+        <TextInput
+         placeholder="Email"
+        style={{marginLeft: 25}}
+        value={input.username}
+        onChangeText={HandleChange}
+        />
         </View>
+        {/* password */}
         <View style={styles.input}>
         <Entypo name="lock" size={25}/>
-        <TextInput placeholder="Password" secureTextEntry={true}style={{marginLeft: 25}}/>
+        <TextInput
+         placeholder="Password"
+          //secureTextEntry={true}
+          style={{marginLeft: 25}}
+          value={input.password}
+          onChangeText={HandleChange}
+          />
         </View>
 
         {/* sign in and loading */}
         <View>
         <ActivityIndicator size='large'  animating={loading} color='blue' style={styles.ActivityIndicator}/>
        <View style={styles.signIn}>
-        <TouchableOpacity onPress={Indicate}>
+
+       {/* onPress={Indicate} */}
+        <TouchableOpacity onPress={HandleClick} >
           <Text style={{fontWeight: 'bold', color: 'white'}}>Sign In</Text>
         </TouchableOpacity>
        </View>
