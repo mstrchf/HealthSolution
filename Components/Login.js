@@ -26,16 +26,7 @@ function Login({ navigation }) {
               name="arrowright"
               size={24}
               color="white"
-              style={{
-                fontWeight: "bold",
-                marginTop: 370,
-                backgroundColor: 'pink',
-                height: 60,
-                textAlign: "center",
-                width: 150,
-                borderRadius: 15,
-                padding: 15,
-              }}
+              style={styles.goArror}
             />
             
           </TouchableOpacity>
@@ -59,5 +50,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingTop: 70,
   },
+  goArror:{
+    fontWeight: "bold",
+    marginTop: 370,
+    backgroundColor: 'pink',
+    height: 60,
+    textAlign: "center",
+    width: 150,
+    borderRadius: 15,
+    padding: 15,
+
+  }
 });
 export default Login;

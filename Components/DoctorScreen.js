@@ -10,30 +10,18 @@ import {
 } from "react-native";
 import {
   Ionicons,
-  AntDesign,
+
   MaterialCommunityIcons,
   FontAwesome5,
 } from "@expo/vector-icons";
 import React, { useState } from "react";
-import DoctorsModal from "./DoctorsModal";
-import {Searchbar} from 'react-native-paper';
+import Doctor from "./Doctor";
 
 
 
-function DoctorScreen() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [chooseData, setChooseData] = useState();
-
-
-  const changeModalVisible = (bool) => {
-    setIsModalVisible(bool);
-  };
-  
-  const setData = (data) => {
-    setChooseData(data);
-  };
+function DoctorScreen({navigation}) {
   return (
-    <SafeAreaView style={{ marginHorizontal: 10 , flex: 1}}>
+    <SafeAreaView style={{ marginHorizontal: 10}}>
       {/* <Text>{chooseData}</Text> */}
       <ScrollView>
         {/* header */}
@@ -41,25 +29,36 @@ function DoctorScreen() {
           <TouchableOpacity>
           <Ionicons name="menu" size={30} color="black"/>
           </TouchableOpacity>
-          <Text style={{ fontSize: 17, fontWeight: "800"}}>
+          <Text style={{ fontSize: 17, fontWeight: "800", marginRight: 100}}>
             Find Your Doctor
           </Text>
-            
-          <MaterialCommunityIcons name="dots-vertical" size={24} color="black" />
-          
+
+
         </View>
-        <Searchbar placeholder="Search" style={{borderRadius: 10, marginBottom:20}}/>
+        
 
         {/* icons on specializations */}
-        <TouchableOpacity>
         <View style={styles.icons}>
+        <TouchableOpacity onPress={() =>navigation.navigate('icon')} >
           <Ionicons name="heart-circle" size={24} color="#ffff" />
-          <Ionicons name="eye" size={24} color="#ffff" />
-          <MaterialCommunityIcons name="bone" size={24} color="#ffff" />
-          <FontAwesome5 name="tooth" size={24} color="#ffff" />
-          <MaterialCommunityIcons name="pill" size={30} color="#ffff" />
-        </View>
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={() =>navigation.navigate('icon')}>
+          <Ionicons name="eye" size={24} color="#ffff" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() =>navigation.navigate('icon')}>
+          <MaterialCommunityIcons name="bone" size={24} color="#ffff" />
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() =>navigation.navigate('icon')}>
+          <FontAwesome5 name="tooth" size={24} color="#ffff" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() =>navigation.navigate('icon')}>
+          <MaterialCommunityIcons name="pill" size={30} color="#ffff" />
+        </TouchableOpacity>
+
+        </View>
         {/* doctors profile */}
         <View>
           <Text
@@ -74,41 +73,12 @@ function DoctorScreen() {
             Book An Appointment
           </Text>
           {/* doctorsProfile */}
-          <View style={styles.profile}>
-            <TouchableOpacity onPress={() => changeModalVisible(true)} >
-            <Image 
-              source={require("../assets/cute.webp")}
-              style={{ width: 50, height: 50, borderRadius: 50 }}
-            />
-            </TouchableOpacity>
-            <View style={{ marginLeft: 30 }}>
-              {/* onpres to show the modal */}
-            <TouchableOpacity onPress={() => changeModalVisible(true)}>
-              <Text style={{ fontWeight: "700", fontSize: 15 }}>
-                Dr. Ebrima Sow
-              </Text>
-              <Text style={{ fontWeight: "400", fontSize: 15 }}>Medicine</Text>
-              {/*modal*/}
-              {/* <View> */}
-                  <Text style={{color: 'grey',fontWeight:'800'}}>Book Now</Text>
-                </TouchableOpacity>
-              {/* </View> */}
-              <Modal
-                transparent={true}
-                animationType="fade"
-                visible={isModalVisible}
-                nRequestClose={() => changeModalVisible(false)}
-              >
-                {/* doctorsModal */}
-                <DoctorsModal
-                  changeModalVisible={changeModalVisible}
-                  setData={setData}
-                />
-              </Modal>
-            </View>
+          <View>
+          <Doctor/>
           </View>
-          
-          
+
+
+
 
         </View>
       </ScrollView>
@@ -121,7 +91,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
 
-    marginTop: 60,
+    marginTop: 30,
     marginBottom: 30
   },
   icons: {
@@ -131,9 +101,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#41c1f9",
     borderRadius: 15,
   },
-  profile: {
-    flexDirection: "row",
-    padding: 10,
-  },
+
 });
 export default DoctorScreen;

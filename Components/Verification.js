@@ -1,6 +1,6 @@
 import { TouchableOpacity , Text, View, ImageBackground, TextInput, StyleSheet, SafeAreaView, ScrollView , ActivityIndicator} from "react-native";
 import {Entypo,AntDesign} from '@expo/vector-icons';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import axios from "axios";
 
 function Verification({navigation}){
@@ -10,9 +10,9 @@ function Verification({navigation}){
 //   password: "",
 // }
 
-  const [loading , setLoading] = useState(false);
-  const [input, setInput] = useState({})
-  const [password, setpassword] = useState({})
+  // const [loading , setLoading] = useState(false);
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
 
 
 // activity indicator logic
@@ -24,39 +24,33 @@ function Verification({navigation}){
 //   }
 // }
 
+// const HandleClick = () =>{
 
-const HandleClick = () =>{
-  axios({
-    method: 'post',
-    url: 'http://172.23.45.149:7222/api/Login/Login',
-    data:{
-      username: 'hi@gmail.com',
-      password: '123n',
-    }
-  })
-  .then((Response)=>{
-     console.log(Response.data);
-  })
-  .catch((error)=>{
-    console.log(error.data);
-
-  })
-}
+// }
 
 // submit
-const HandleChange= () =>{
-  setInput(input)
+const HandleChange = ()=>{
+  console.log(username)
+  console.log(password)
 
 
-  //setInput(...input.event.target.value);
+  axios.post('http://172.23.45.149:7222/api/Login/Login',{
+    username: username,  
+    password: int(password)
+  })
+.then((Response)=>{
+  console.log(Response.message)
+})
+.catch((Response) =>{
+  console.debug(Response);
+  console.log(Response.message)
+});
 
 }
-
-
 
 
   return(
-    <SafeAreaView style={{flex: 1, marginTop: 20}}>
+    <SafeAreaView style={{flex: 1,}}>
       <ScrollView >
       {/* backgroungImage */}
       <ImageBackground source={require('../assets/imo.webp')} style={{width: '100%' ,height: 330}}>
@@ -75,15 +69,15 @@ const HandleChange= () =>{
       <Text style={{fontWeight: 'bold', color: '#41c1f9'}}>Get One</Text>
       </TouchableOpacity>
       </View>
-      {/* username */}
+      {/* userInput */}
       <View style={styles.signUp}>
         <View  style={styles.input}>
           <AntDesign name="user" size={25}/>
         <TextInput
          placeholder="Email"
         style={{marginLeft: 25}}
-        value={input.username}
-        onChangeText={HandleChange}
+        value={username}
+        onChangeText={text => setUsername( text)}
         />
         </View>
         {/* password */}
@@ -93,18 +87,17 @@ const HandleChange= () =>{
          placeholder="Password"
           //secureTextEntry={true}
           style={{marginLeft: 25}}
-          value={input.password}
-          onChangeText={HandleChange}
+          value={password}
+          onChangeText={text =>setPassword(text)}
           />
         </View>
 
         {/* sign in and loading */}
         <View>
-        <ActivityIndicator size='large'  animating={loading} color='blue' style={styles.ActivityIndicator}/>
-       <View style={styles.signIn}>
-
+        {/* <ActivityIndicator size='large'  animating={loading} color='blue' style={styles.ActivityIndicator}/> */}
+       <View >
        {/* onPress={Indicate} */}
-        <TouchableOpacity onPress={HandleClick} >
+        <TouchableOpacity  style={styles.signIn} onPress={() => HandleChange(username)}>
           <Text style={{fontWeight: 'bold', color: 'white'}}>Sign In</Text>
         </TouchableOpacity>
        </View>
@@ -128,7 +121,7 @@ const HandleChange= () =>{
   input:{
        flexDirection: 'row',
        borderWidth: 0.5,
-       height: 65,
+       height: 70,
        padding: 20,
        marginTop: 40, 
        borderRadius: 15,
@@ -141,18 +134,18 @@ const HandleChange= () =>{
   },
   signIn:{
     marginTop: 50,
-    height:60,
+    height:70,
     width: 370,
     borderRadius: 15,
     alignItems: 'center',
-    paddingTop: 15,
+    paddingTop: 19,
     backgroundColor: '#41c1f9',
     marginTop:50
     
   },
-  ActivityIndicator:{
-    top:15
-  }
+  // ActivityIndicator:{
+  //   top:15
+  // }
  
  })
 export default Verification;

@@ -14,7 +14,7 @@ function DoctorsModal(props) {
     closeModal = (bool, data) => {
       props.changeModalVisible(bool);
       props.setData(data);
-      navigation.navigate('user');
+      // navigation.navigate('user');
       
     }
     
@@ -41,7 +41,7 @@ function DoctorsModal(props) {
           </TouchableOpacity>
           {/*Continuebutton */}
           <TouchableOpacity
-           onPress={() => closeModal(false, "Continue")}           
+           onPress={() => navigation.navigate('user')}           
            >
             <Text style={{fontWeight: 'bold', color: '#41c1f9'}}>Continue</Text>
           </TouchableOpacity>
