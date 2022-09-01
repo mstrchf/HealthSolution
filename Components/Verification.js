@@ -15,33 +15,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Verification({ navigation }) {
-  const Color = {
-    red: "red",
-    blue: "79785B",
-    light: "#F3F4FB",
-  };
-  const ShowErrror = () => {
-    if (error) {
-      <Text
-        style={{
-          color: "red",
-          fontSize: 15,
-          marginTop: 8,
-          marginLeft: 15,
-        }}
-      >
-        Email is required
-      </Text>;
-    } else {
-      setError(Color.blue);
-    }
-  };
+ 
+  
 
   // const [loading , setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [focuse, setFocuse] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState({});
+  
+  
 
   // activity indicator logic
   // const Indicate = () => {
@@ -55,7 +37,6 @@ function Verification({ navigation }) {
   // const HandleClick = () =>{
 
   // }
-
   // submit
   const HandleChange = () => {
     console.log(username);
@@ -67,11 +48,11 @@ function Verification({ navigation }) {
         password: password,
       })
       .then((Response) => {
-        console.log(Response.message);
+        console.log(Response.data)
       })
       .catch((Response) => {
-        console.debug(Response);
-        console.log(Response.message);
+        
+        console.log(Response.data);
       });
   };
 
@@ -103,16 +84,7 @@ function Verification({ navigation }) {
         {/* userInput */}
         <View style={styles.signUp}>
           <View
-            style={[
-              styles.input,
-              {
-                borderColor: error
-                  ? Color.red
-                  : focuse
-                  ? Color.blue
-                  : Color.grey,
-              },
-            ]}
+            style={styles.input}
           >
             <AntDesign name="user" size={25} />
             <TextInput
@@ -121,16 +93,10 @@ function Verification({ navigation }) {
               style={{ marginLeft: 25 }}
               value={username}
               onChangeText={(text) => setUsername(text)}
-              focuse={() => {
-                onfouse();
-                setFocuse(true);
-              }}
-              onBlur={() => {
-                setFocuse(false);
-              }}
+              
             />
           </View>
-          {ShowErrror}
+          {/*  */}
           {/* password */}
           <View style={styles.input}>
             <Entypo name="lock" size={25} />

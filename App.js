@@ -16,6 +16,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Drawer Navigation
 // import { createDrawerNavigator } from "@react-navigation/drawer";
 
+// Redux
+
 
 
 // stack navigator and screen
