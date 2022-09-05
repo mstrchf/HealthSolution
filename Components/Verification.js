@@ -15,33 +15,9 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Verification({ navigation }) {
-  const Color = {
-    red: "red",
-    blue: "79785B",
-    light: "#F3F4FB",
-  };
-  const ShowErrror = () => {
-    if (error) {
-      <Text
-        style={{
-          color: "red",
-          fontSize: 15,
-          marginTop: 8,
-          marginLeft: 15,
-        }}
-      >
-        Email is required
-      </Text>;
-    } else {
-      setError(Color.blue);
-    }
-  };
-
   // const [loading , setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [focuse, setFocuse] = useState(false);
-  const [error, setError] = useState();
 
   // activity indicator logic
   // const Indicate = () => {
@@ -93,7 +69,7 @@ function Verification({ navigation }) {
         </ImageBackground>
         {/* inputs */}
         <View style={styles.getAccount}>
-          <Text style={{ fontWigeht: "700" }}>Don't Have An Account?</Text>
+          <Text style={styles.getone}>Don't Have An Account?</Text>
           <TouchableOpacity>
             <Text style={{ fontWeight: "bold", color: "#41c1f9" }}>
               Get One
@@ -102,18 +78,7 @@ function Verification({ navigation }) {
         </View>
         {/* userInput */}
         <View style={styles.signUp}>
-          <View
-            style={[
-              styles.input,
-              {
-                borderColor: error
-                  ? Color.red
-                  : focuse
-                  ? Color.blue
-                  : Color.grey,
-              },
-            ]}
-          >
+          <View style={styles.input}>
             <AntDesign name="user" size={25} />
             <TextInput
               // error={error}
@@ -121,16 +86,9 @@ function Verification({ navigation }) {
               style={{ marginLeft: 25 }}
               value={username}
               onChangeText={(text) => setUsername(text)}
-              focuse={() => {
-                onfouse();
-                setFocuse(true);
-              }}
-              onBlur={() => {
-                setFocuse(false);
-              }}
             />
           </View>
-          {ShowErrror}
+
           {/* password */}
           <View style={styles.input}>
             <Entypo name="lock" size={25} />
@@ -185,7 +143,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     padding: 25,
-    marginTop: 10,
   },
   signIn: {
     marginTop: 50,
@@ -196,6 +153,9 @@ const styles = StyleSheet.create({
     paddingTop: 19,
     backgroundColor: "#41c1f9",
     marginTop: 50,
+  },
+  getone: {
+    fontWeight: "bold",
   },
   // ActivityIndicator:{
   //   top:15

@@ -1,14 +1,13 @@
 import {
-  Image,
   Text,
   View,
   TouchableOpacity,
   StyleSheet,
   SafeAreaView,
   ScrollView,
-  Modal,
   ImageBackground,
 } from "react-native";
+import RemoveEnable from "./RemoveEnable";
 function Adminisrator({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
@@ -17,7 +16,6 @@ function Adminisrator({ navigation }) {
           <ImageBackground
             source={require("../assets/test.webp")}
             style={{
-              
               height: 300,
               borderRadius: 10,
               resizeMode: "contain",
@@ -40,110 +38,9 @@ function Adminisrator({ navigation }) {
             </TouchableOpacity>
           </ImageBackground>
         </View>
-
         {/* list of doctors */}
-        <View style={styles.profile}>
-          <Image
-            source={require("../assets/cat.webp")}
-            style={{ width: 50, height: 50, borderRadius: 50 }}
-          />
-          <View style={{ marginLeft: 20 }}>
-            <Text style={{ fontWeight: "800" }}>Mariama Bah</Text>
-            <Text style={{ fontWeight: "400" }}>Ophtalmologist</Text>
-          </View>
-        </View>
-        {/* button */}
-        <View style={styles.button}>
-          {/* remove button */}
-          <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "#41c1f9", fontWeight: "800", marginLeft: 80 }}>
-              Remove
-            </Text>
-          </TouchableOpacity>
-          {/* enable button */}
-          <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}>
-              Enable
-            </Text>
-          </TouchableOpacity>
-        </View>
-        {/* 2 */}
-        <View style={styles.profile}>
-          <Image
-            source={require("../assets/cat.webp")}
-            style={{ width: 50, height: 50, borderRadius: 50 }}
-          />
-          <View style={{ marginLeft: 20 }}>
-            <Text style={{ fontWeight: "800" }}>Mariama Bah</Text>
-            <Text style={{ fontWeight: "400" }}>Ophtalmologist</Text>
-          </View>
-        </View>
-        {/* button */}
-        <View style={styles.button}>
-          {/* remove button */}
-          <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "#41c1f9", fontWeight: "800", marginLeft: 80 }}>
-              Remove
-            </Text>
-          </TouchableOpacity>
-          {/* enable button */}
-          <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}>
-              Enable
-            </Text>
-          </TouchableOpacity>
-        </View>
-        {/* 3 */}
-        <View style={styles.profile}>
-          <Image
-            source={require("../assets/cat.webp")}
-            style={{ width: 50, height: 50, borderRadius: 50 }}
-          />
-          <View style={{ marginLeft: 20 }}>
-            <Text style={{ fontWeight: "800" }}>Mariama Bah</Text>
-            <Text style={{ fontWeight: "400" }}>Ophtalmologist</Text>
-          </View>
-        </View>
-        {/* button */}
-        <View style={styles.button}>
-          {/* remove button */}
-          <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "#41c1f9", fontWeight: "800", marginLeft: 80 }}>
-              Remove
-            </Text>
-          </TouchableOpacity>
-          {/* enable button */}
-          <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}>
-              Enable
-            </Text>
-          </TouchableOpacity>
-        </View>
-        {/* 4 */}
-        <View style={styles.profile}>
-          <Image
-            source={require("../assets/cat.webp")}
-            style={{ width: 50, height: 50, borderRadius: 50 }}
-          />
-          <View style={{ marginLeft: 20 }}>
-            <Text style={{ fontWeight: "800" }}>Mariama Bah</Text>
-            <Text style={{ fontWeight: "400" }}>Ophtalmologist</Text>
-          </View>
-        </View>
-        {/* button */}
-        <View style={styles.button}>
-          {/* remove button */}
-          <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "#41c1f9", fontWeight: "800", marginLeft: 80 }}>
-              Remove
-            </Text>
-          </TouchableOpacity>
-          {/* enable button */}
-          <TouchableOpacity onPress={() => navigation.navigate("entry")}>
-            <Text style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}>
-              Enable
-            </Text>
-          </TouchableOpacity>
+        <View>
+          <RemoveEnable />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -151,14 +48,13 @@ function Adminisrator({ navigation }) {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   profile: {
     flexDirection: "row",
     padding: 20,
     borderBottomWidth: 0.2,
     marginHorizontal: 10,
-
   },
   button: {
     flexDirection: "row",

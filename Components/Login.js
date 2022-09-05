@@ -18,7 +18,14 @@ function Login({ navigation }) {
       >
         {/* text and start button */}
         <View style={styles.content}>
-          <Text style={{ fontSize: 29, color: "#ffff", marginRight: 130, paddingTop: 40 }}>
+          <Text
+            style={{
+              fontSize: 29,
+              color: "#ffff",
+              marginRight: 130,
+              paddingTop: 40,
+            }}
+          >
             Perfect HealthCare Solution
           </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Verify")}>
@@ -28,7 +35,6 @@ function Login({ navigation }) {
               color="white"
               style={styles.goArror}
             />
-            
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -48,18 +54,17 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     marginLeft: 40,
     justifyContent: "space-between",
-    paddingTop: 70,
+    paddingTop: 50,
   },
-  goArror:{
+  goArror: {
     fontWeight: "bold",
-    marginTop: 370,
-    backgroundColor: 'pink',
+    marginTop: 360,
+    backgroundColor: "pink",
     height: 60,
     textAlign: "center",
     width: 150,
     borderRadius: 15,
     padding: 15,
-
-  }
+  },
 });
 export default Login;
