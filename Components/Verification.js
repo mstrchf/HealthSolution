@@ -15,9 +15,21 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Verification({ navigation }) {
+<<<<<<< HEAD
   // const [loading , setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+=======
+ 
+  
+
+  // const [loading , setLoading] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState({});
+  
+  
+>>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
 
   // activity indicator logic
   // const Indicate = () => {
@@ -31,7 +43,6 @@ function Verification({ navigation }) {
   // const HandleClick = () =>{
 
   // }
-
   // submit
   const HandleChange = () => {
     console.log(username);
@@ -43,11 +54,11 @@ function Verification({ navigation }) {
         password: password,
       })
       .then((Response) => {
-        console.log(Response.message);
+        console.log(Response.data)
       })
       .catch((Response) => {
-        console.debug(Response);
-        console.log(Response.message);
+        
+        console.log(Response.data);
       });
   };
 
@@ -78,7 +89,13 @@ function Verification({ navigation }) {
         </View>
         {/* userInput */}
         <View style={styles.signUp}>
+<<<<<<< HEAD
           <View style={styles.input}>
+=======
+          <View
+            style={styles.input}
+          >
+>>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
             <AntDesign name="user" size={25} />
             <TextInput
               // error={error}
@@ -86,9 +103,16 @@ function Verification({ navigation }) {
               style={{ marginLeft: 25 }}
               value={username}
               onChangeText={(text) => setUsername(text)}
+<<<<<<< HEAD
             />
           </View>
 
+=======
+              
+            />
+          </View>
+          {/*  */}
+>>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
           {/* password */}
           <View style={styles.input}>
             <Entypo name="lock" size={25} />
