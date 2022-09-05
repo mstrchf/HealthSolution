@@ -7,42 +7,24 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
-  onfouse,
   ActivityIndicator,
 } from "react-native";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import{useDispatch} from 'react-redux';
 
 function Verification({ navigation }) {
-<<<<<<< HEAD
-  // const [loading , setLoading] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-=======
- 
+ const dispatch = useDispatch();
   
 
-  // const [loading , setLoading] = useState(false);
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
+  const [loading , setLoading] = useState(false);
   
-  
->>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
 
-  // activity indicator logic
-  // const Indicate = () => {
-  //   if(loading === true){
-  //       setLoading(false);
-  //   }else{
-  //       setLoading(true);
-  //   }
-  // }
-
-  // const HandleClick = () =>{
-
-  // }
   // submit
   const HandleChange = () => {
     console.log(username);
@@ -50,20 +32,37 @@ function Verification({ navigation }) {
 
     axios
       .post("http://172.23.45.149:7222/api/Login/Login", {
-        username: username,
-        password: password,
+        headers:{
+          'Content-Type': "application/json",
+          username: username,
+          password: password,
+        }
+        
       })
       .then((Response) => {
-        console.log(Response.data)
-      })
-      .catch((Response) => {
+        console.log(data)
+        const data = Response;
+        dispatch(acttion.setUser(data));
         
+      })
+      .catch((error) => {
         console.log(Response.data);
-      });
+
+        if(error.Response.status == 422){
+          setError({status: 422 , message: "username and password is required"});
+        }
+      })
+      .finally(()=>{
+        setLoading(false);
+        setTimeout(() => {
+          setLoading(true)
+
+        });
+      } , 5000)
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView>
       <ScrollView>
         {/* backgroungImage */}
         <ImageBackground
@@ -80,7 +79,7 @@ function Verification({ navigation }) {
         </ImageBackground>
         {/* inputs */}
         <View style={styles.getAccount}>
-          <Text style={styles.getone}>Don't Have An Account?</Text>
+          <Text style={styles.account}>Don't Have An Account?</Text>
           <TouchableOpacity>
             <Text style={{ fontWeight: "bold", color: "#41c1f9" }}>
               Get One
@@ -89,30 +88,19 @@ function Verification({ navigation }) {
         </View>
         {/* userInput */}
         <View style={styles.signUp}>
-<<<<<<< HEAD
-          <View style={styles.input}>
-=======
           <View
             style={styles.input}
           >
->>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
             <AntDesign name="user" size={25} />
             <TextInput
-              // error={error}
               placeholder="Email"
               style={{ marginLeft: 25 }}
               value={username}
               onChangeText={(text) => setUsername(text)}
-<<<<<<< HEAD
-            />
-          </View>
-
-=======
               
             />
           </View>
           {/*  */}
->>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
           {/* password */}
           <View style={styles.input}>
             <Entypo name="lock" size={25} />
@@ -130,6 +118,7 @@ function Verification({ navigation }) {
             {/* <ActivityIndicator size='large'  animating={loading} color='blue' style={styles.ActivityIndicator}/> */}
             <View>
               {/* onPress={Indicate} */}
+              <ActivityIndicator size='large' animating={loading} style={styles.ActivityIndicator}/>
               <TouchableOpacity
                 style={styles.signIn}
                 onPress={() => HandleChange(username)}
@@ -178,11 +167,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#41c1f9",
     marginTop: 50,
   },
-  getone: {
-    fontWeight: "bold",
+  account:{
+    fontWeight: "bold"
   },
-  // ActivityIndicator:{
-  //   top:15
-  // }
+  ActivityIndicator:{
+    top:15,
+  }
 });
 export default Verification;

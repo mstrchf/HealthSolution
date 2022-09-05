@@ -16,15 +16,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // Drawer Navigation
 // import { createDrawerNavigator } from "@react-navigation/drawer";
 
-<<<<<<< HEAD
+
 //Redux
 import { Provider } from "react-redux";
 import { legacy_createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-=======
-// Redux
 
->>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
 
 const store = legacy_createStore(Reducer, applyMiddleware(thunk));
 

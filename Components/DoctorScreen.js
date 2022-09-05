@@ -68,6 +68,12 @@ function DoctorScreen({ navigation }) {
           {/* doctorsProfile */}
           <View>
             <Doctor />
+            <Doctor />
+            <Doctor />
+            <Doctor />
+            <Doctor />
+            <Doctor />
+            <Doctor />
           </View>
         </View>
       </ScrollView>
