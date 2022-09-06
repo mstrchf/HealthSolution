@@ -20,9 +20,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Provider } from "react-redux";
 import { legacy_createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 // Redux
-const store = legacy_createStore(Reducer, applyMiddleware(thunk));
+const store = legacy_createStore(Reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 // stack navigator and screen
 const Stack = createNativeStackNavigator();
@@ -49,7 +50,7 @@ export default function App() {
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false }}>
             <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Verify" component={Verification} />
+            <Stack.Screen name="Verification" component={Verification} />
 
             <Stack.Screen name="Book" component={DoctorScreen} />
             <Stack.Screen name="user" component={Book} />

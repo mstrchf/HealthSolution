@@ -11,27 +11,21 @@ import {
 } from "react-native";
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {Login} from "../redux/actions/LoginAction";
+
+
 
 function Verification({ navigation }) {
-  // const [loading , setLoading] = useState(false);
+const authState = useSelector((state) => state.user)
+const dispatch = useDispatch();
+
+
+  //states
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
-
-  // activity indicator logic
-  // const Indicate = () => {
-  //   if(loading === true){
-  //       setLoading(false);
-  //   }else{
-  //       setLoading(true);
-  //   }
-  // }
-
-  // const HandleClick = () =>{
-
-  // }
+  const [loading, setLoading] = useState(false);
 
   const HandlePassword = (text) => {
     setPassword(text);
@@ -40,66 +34,22 @@ function Verification({ navigation }) {
   const HandleUserName = (text) => {
     setUsername(text);
   };
-  // submitButton
-  const HandleSubmit = () => {
-    console.log(username);
-    console.log(password);
 
-    // axios
-    //   .post("http://172.23.45.149:7222/api/Login/Login", {
-    //     username: username,
-    //     password: password,
-    //   })
-    //   .then((Response) => {
-    //     console.log(Response.data);
-    //   })
-    //   .catch((Response) => {
-    //     console.log(Response.data);
-    //   });
+
+  //submitButton
+  const HandleSubmit = () => {
+    dispatch(Login(username, password));
   };
 
-  const dispatch = useDispatch();
+  if (authState.currentUser !== undefined && authState.currentUser !== null && authState.currentUser !== "") {
+    var currentUser = authState.currentUser;
+    console.debug("redirect to the next screen")
+  }
 
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [error, setError] = useState({});
-  // const [loading , setLoading] = useState(false);
-
-  // submit
-  // const HandleChange = () => {
-  //   console.log(username);
-  //   console.log(password);
-
-  //   axios
-  //     .post("http://172.23.45.149:7222/api/Login/Login", {
-  //       headers:{
-  //         'Content-Type': "application/json",
-  //         username: username,
-  //         password: password,
-  //       }
-
-  //     })
-  //     .then((Response) => {
-  //       console.log(data)
-  //       const data = Response;
-  //       dispatch(acttion.setUser(data));
-
-  //     })
-  //     .catch((error) => {
-  //       console.log(Response.data);
-
-  //       if(error.Response.status == 422){
-  //         setError({status: 422 , message: "username and password is required"});
-  //       }
-  //     })
-  //     .finally(()=>{
-  //       setLoading(false);
-  //       setTimeout(() => {
-  //         setLoading(true)
-
-  //       });
-  //     } , 5000)
-  // };
+  if(authState.error !== undefined && authState.error !== null && authState.error !== "") {
+    console.debug(authState);
+    // you need to display the error to the user
+  }
 
   return (
     <SafeAreaView>
@@ -214,4 +164,4 @@ const styles = StyleSheet.create({
   // },
 });
 
-export default Verification;
+export default  Verification;

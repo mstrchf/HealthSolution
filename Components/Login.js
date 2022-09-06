@@ -28,7 +28,7 @@ function Login({ navigation }) {
           >
             Perfect HealthCare Solution
           </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Verify")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Verification")}>
             <AntDesign
               name="arrowright"
               size={24}
