@@ -7,7 +7,6 @@ import {
   StyleSheet,
   SafeAreaView,
   ScrollView,
-  onfouse,
   ActivityIndicator,
 } from "react-native";
 import { Entypo, AntDesign } from "@expo/vector-icons";
@@ -15,21 +14,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Verification({ navigation }) {
-<<<<<<< HEAD
-  // const [loading , setLoading] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-=======
- 
-  
-
   // const [loading , setLoading] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
-  
-  
->>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
 
   // activity indicator logic
   // const Indicate = () => {
@@ -43,27 +31,34 @@ function Verification({ navigation }) {
   // const HandleClick = () =>{
 
   // }
-  // submit
-  const HandleChange = () => {
+
+  const HandlePassword = (text) => {
+    setPassword(text);
+  };
+
+  const HandleUserName = (text) => {
+    setUsername(text);
+  };
+  // submitButton
+  const HandleSubmit = () => {
     console.log(username);
     console.log(password);
 
-    axios
-      .post("http://172.23.45.149:7222/api/Login/Login", {
-        username: username,
-        password: password,
-      })
-      .then((Response) => {
-        console.log(Response.data)
-      })
-      .catch((Response) => {
-        
-        console.log(Response.data);
-      });
+    // axios
+    //   .post("http://172.23.45.149:7222/api/Login/Login", {
+    //     username: username,
+    //     password: password,
+    //   })
+    //   .then((Response) => {
+    //     console.log(Response.data);
+    //   })
+    //   .catch((Response) => {
+    //     console.log(Response.data);
+    //   });
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView>
       <ScrollView>
         {/* backgroungImage */}
         <ImageBackground
@@ -89,30 +84,17 @@ function Verification({ navigation }) {
         </View>
         {/* userInput */}
         <View style={styles.signUp}>
-<<<<<<< HEAD
           <View style={styles.input}>
-=======
-          <View
-            style={styles.input}
-          >
->>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
             <AntDesign name="user" size={25} />
             <TextInput
-              // error={error}
               placeholder="Email"
               style={{ marginLeft: 25 }}
               value={username}
-              onChangeText={(text) => setUsername(text)}
-<<<<<<< HEAD
+              // onChangeText={(text) => setUsername(text)}
+              onChangeText={HandleUserName}
             />
           </View>
 
-=======
-              
-            />
-          </View>
-          {/*  */}
->>>>>>> 4f7f503f2c7e620896c153b409da61caf017271e
           {/* password */}
           <View style={styles.input}>
             <Entypo name="lock" size={25} />
@@ -121,7 +103,8 @@ function Verification({ navigation }) {
               //secureTextEntry={true}
               style={{ marginLeft: 25 }}
               value={password}
-              onChangeText={(text) => setPassword(text)}
+              // onChangeText={(text) => setPassword(text)}
+              onChangeText={HandlePassword}
             />
           </View>
 
@@ -129,18 +112,13 @@ function Verification({ navigation }) {
           <View>
             {/* <ActivityIndicator size='large'  animating={loading} color='blue' style={styles.ActivityIndicator}/> */}
             <View>
-              {/* onPress={Indicate} */}
-              <TouchableOpacity
-                style={styles.signIn}
-                onPress={() => HandleChange(username)}
-              >
+              <TouchableOpacity style={styles.signIn} onPress={HandleSubmit}>
                 <Text style={{ fontWeight: "bold", color: "white" }}>
                   Sign In
                 </Text>
               </TouchableOpacity>
             </View>
           </View>
-          {/*  */}
         </View>
       </ScrollView>
     </SafeAreaView>

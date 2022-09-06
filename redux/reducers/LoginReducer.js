@@ -1,19 +1,20 @@
-import { NEW_POST } from "../actions/Action";
+import { SET_POST, LOGOUT } from "../actions/LoginAction";
 
 const initialState = {
   username: "",
   password: "",
 };
 
-function UserReducer(state = initialState, action) {
+function LoginReducer(state = initialState, action) {
   switch (action.type) {
-    case NEW_POST:
+    case SET_POST:
       return {
         ...state,
         initialState: action.payload,
       };
+
     default:
       return state;
   }
 }
-export default UserReducer;
+export default LoginReducer;
