@@ -7,7 +7,7 @@ import Book from "./Components/Book";
 import DoctorProfile from "./Components/DoctorProfile";
 import Adminisrator from "./Components/Administrator";
 import EntryScreen from "./Components/EntryScreen";
-import DrawerContent from "./Components/DrawerContent";
+// import DrawerContent from "./Components/DrawerContent";
 import Icons from "./Components/Icons";
 import Reducer from "./redux/reducers/Reducer";
 // Navigation

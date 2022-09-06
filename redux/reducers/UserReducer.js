@@ -5,7 +5,7 @@ const initialState = {
   password: "",
 };
 
-function LoginReducer(state = initialState, action) {
+function UserReducer(state = initialState, action) {
   switch (action.type) {
     case SET_POST:
       return {
@@ -16,5 +16,4 @@ function LoginReducer(state = initialState, action) {
       return state;
   }
 }
-
-export default LoginReducer;
+export default UserReducer;

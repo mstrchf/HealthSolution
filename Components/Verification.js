@@ -12,6 +12,7 @@ import {
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
 
 function Verification({ navigation }) {
   // const [loading , setLoading] = useState(false);
@@ -57,6 +58,49 @@ function Verification({ navigation }) {
     //   });
   };
 
+  const dispatch = useDispatch();
+
+  // const [username, setUsername] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [error, setError] = useState({});
+  // const [loading , setLoading] = useState(false);
+
+  // submit
+  // const HandleChange = () => {
+  //   console.log(username);
+  //   console.log(password);
+
+  //   axios
+  //     .post("http://172.23.45.149:7222/api/Login/Login", {
+  //       headers:{
+  //         'Content-Type': "application/json",
+  //         username: username,
+  //         password: password,
+  //       }
+
+  //     })
+  //     .then((Response) => {
+  //       console.log(data)
+  //       const data = Response;
+  //       dispatch(acttion.setUser(data));
+
+  //     })
+  //     .catch((error) => {
+  //       console.log(Response.data);
+
+  //       if(error.Response.status == 422){
+  //         setError({status: 422 , message: "username and password is required"});
+  //       }
+  //     })
+  //     .finally(()=>{
+  //       setLoading(false);
+  //       setTimeout(() => {
+  //         setLoading(true)
+
+  //       });
+  //     } , 5000)
+  // };
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -75,7 +119,7 @@ function Verification({ navigation }) {
         </ImageBackground>
         {/* inputs */}
         <View style={styles.getAccount}>
-          <Text style={styles.getone}>Don't Have An Account?</Text>
+          <Text style={styles.account}>Don't Have An Account?</Text>
           <TouchableOpacity>
             <Text style={{ fontWeight: "bold", color: "#41c1f9" }}>
               Get One
@@ -113,6 +157,12 @@ function Verification({ navigation }) {
             {/* <ActivityIndicator size='large'  animating={loading} color='blue' style={styles.ActivityIndicator}/> */}
             <View>
               <TouchableOpacity style={styles.signIn} onPress={HandleSubmit}>
+                {/* onPress={Indicate} */}
+                {/* <ActivityIndicator size='large' animating={loading} style={styles.ActivityIndicator}/> */}
+                {/* <TouchableOpacity
+                style={styles.signIn}
+                onPress={() => HandleChange(username)}
+              > */}
                 <Text style={{ fontWeight: "bold", color: "white" }}>
                   Sign In
                 </Text>
@@ -156,11 +206,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#41c1f9",
     marginTop: 50,
   },
-  getone: {
+  account: {
     fontWeight: "bold",
   },
   // ActivityIndicator:{
-  //   top:15
-  // }
+  //   top:15,
+  // },
 });
+
 export default Verification;
