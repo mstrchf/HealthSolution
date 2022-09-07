@@ -7,6 +7,7 @@ import Book from "./Components/Book";
 import DoctorProfile from "./Components/DoctorProfile";
 import Adminisrator from "./Components/Administrator";
 import EntryScreen from "./Components/EntryScreen";
+import Register from "./Components/Register";
 // import DrawerContent from "./Components/DrawerContent";
 import Icons from "./Components/Icons";
 import Reducer from "./redux/reducers/Reducer";
@@ -59,6 +60,7 @@ export default function App() {
             <Stack.Screen name="entry" component={EntryScreen} />
             {/* <Stack.Screen name="doctorsportal" component={DoctorsPortal} /> */}
             <Stack.Screen name="icon" component={Icons} />
+            <Stack.Screen name="Register" component={Register}/>
           </Stack.Navigator>
         </NavigationContainer>
       </View>

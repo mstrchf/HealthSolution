@@ -21,7 +21,7 @@ function Verification({ navigation }) {
   //states
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState({});
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const HandlePassword = (text) => {
@@ -35,6 +35,8 @@ function Verification({ navigation }) {
   //submitButton
   const HandleSubmit = () => {
     dispatch(Login(username, password));
+ 
+
   };
 
   //if the currentuser not undefine and not empty then the should login and move to the next page
@@ -45,13 +47,14 @@ function Verification({ navigation }) {
   ) {
     var currentUser = authState.currentUser;
     console.debug("redirect to the next screen");
+
   }
 
   useEffect(() => {
-    if (authState.currentUser) {
-      navigation.navigate("DoctorScreen");
+    if (currentUser) {
+       navigation.navigate("Book");
     }
-  }, [authState]);
+  }, [currentUser]);
 
   //else if the currentuser is empty throw error
   if (
@@ -59,8 +62,9 @@ function Verification({ navigation }) {
     authState.error !== null &&
     authState.error !== ""
   ) {
-    console.debug(authState);
+    // console.debug(authState);
     // you need to display the error to the user
+    // alert('please fill in username and password');    
   }
 
   return (
@@ -82,9 +86,9 @@ function Verification({ navigation }) {
         {/* inputs */}
         <View style={styles.getAccount}>
           <Text style={styles.account}>Don't Have An Account?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
             <Text style={{ fontWeight: "bold", color: "#41c1f9" }}>
-              Get One
+              Register
             </Text>
           </TouchableOpacity>
         </View>
@@ -106,6 +110,7 @@ function Verification({ navigation }) {
             <Entypo name="lock" size={25} />
             <TextInput
               placeholder="Password"
+              required
               //secureTextEntry={true}
               style={{ marginLeft: 25 }}
               value={password}
@@ -116,15 +121,10 @@ function Verification({ navigation }) {
 
           {/* sign in and loading */}
           <View>
-            {/* <ActivityIndicator size='large'  animating={loading} color='blue' style={styles.ActivityIndicator}/> */}
+            
             <View>
               <TouchableOpacity style={styles.signIn} onPress={HandleSubmit}>
-                {/* onPress={Indicate} */}
-                {/* <ActivityIndicator size='large' animating={loading} style={styles.ActivityIndicator}/> */}
-                {/* <TouchableOpacity
-                style={styles.signIn}
-                onPress={() => HandleChange(username)}
-              > */}
+
                 <Text style={{ fontWeight: "bold", color: "white" }}>
                   Sign In
                 </Text>

@@ -3,6 +3,8 @@ export const AUTHENTICATE = "AUTHENTICATE";
 export const AUTHENTICATE_SUCCESS = "AUTHENTICATION_SUCCESS";
 export const LOGOUT = "LOGOUT";
 export const USER_ERROR = "USER_RROR";
+export const REGISTER = "REGISTER";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 
 import axios from "axios";
 const API = "http://172.23.45.149:7222/api/Login/Login";
@@ -37,4 +39,23 @@ export const Login = ( username, password) => dispatch => {
       dispatch(authError(error.response.data));
       return Promise.reject({error});
     });
+}
+
+
+//Regiter Creators
+ const Register = payload =>({
+  type: REGISTER,
+  payload
+});
+
+const RSuccess = payload =>({
+  type:REGISTER_SUCCESS,
+  payload
+})
+
+export const RegisterSuccess = (dispatch) =>{
+  dispatch({type:REGISTER})
+  return axios.post(API, {username: username, password: password})
+  .then(dispatch(Register(data)))
+  .then(dispatch(RSuccess(data)))
 }

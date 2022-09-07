@@ -1,4 +1,4 @@
-import {AUTHENTICATE, AUTHENTICATE_SUCCESS, USER_ERROR, LOGOUT } from "../actions/LoginAction";
+import {AUTHENTICATE, AUTHENTICATE_SUCCESS, USER_ERROR} from "../actions/LoginAction";
 
 const initialState = {
     currentUser : null,
