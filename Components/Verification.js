@@ -12,14 +12,11 @@ import {
 import { Entypo, AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {Login} from "../redux/actions/LoginAction";
-
-
+import { Login } from "../redux/actions/LoginAction";
 
 function Verification({ navigation }) {
-const authState = useSelector((state) => state.user)
-const dispatch = useDispatch();
-
+  const authState = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   //states
   const [username, setUsername] = useState("");
@@ -35,18 +32,33 @@ const dispatch = useDispatch();
     setUsername(text);
   };
 
-
   //submitButton
   const HandleSubmit = () => {
     dispatch(Login(username, password));
   };
 
-  if (authState.currentUser !== undefined && authState.currentUser !== null && authState.currentUser !== "") {
+  //if the currentuser not undefine and not empty then the should login and move to the next page
+  if (
+    authState.currentUser !== undefined &&
+    authState.currentUser !== null &&
+    authState.currentUser !== ""
+  ) {
     var currentUser = authState.currentUser;
-    console.debug("redirect to the next screen")
+    console.debug("redirect to the next screen");
   }
 
-  if(authState.error !== undefined && authState.error !== null && authState.error !== "") {
+  useEffect(() => {
+    if (authState.currentUser) {
+      navigation.navigate("DoctorScreen");
+    }
+  }, [authState]);
+
+  //else if the currentuser is empty throw error
+  if (
+    authState.error !== undefined &&
+    authState.error !== null &&
+    authState.error !== ""
+  ) {
     console.debug(authState);
     // you need to display the error to the user
   }
@@ -164,4 +176,4 @@ const styles = StyleSheet.create({
   // },
 });
 
-export default  Verification;
+export default Verification;
