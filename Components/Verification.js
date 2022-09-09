@@ -21,7 +21,7 @@ function Verification({ navigation }) {
   //states
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const HandlePassword = (text) => {
@@ -62,15 +62,11 @@ function Verification({ navigation }) {
   ) {
     // console.debug(authState);
     // you need to display the error to the user
-    throw error("please fill in username and password");
+    // alert("please fill in username and password");
   }
 
-  //Error Message
-  // useEffect(() => {
-  //   if (authState.error) {
-  //     setError("please fill in username and password");
-  //   }
-  // });
+
+ 
 
   return (
     <SafeAreaView>

@@ -7,7 +7,8 @@ export const REGISTER = "REGISTER";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 
 import axios from "axios";
-const API = "http://172.23.45.149:7222/api/Login/Login";
+const login = "http://172.23.45.149:7222/api/Login/Login";
+const register = "http://172.23.45.149:7222/api/Login/Register";
 
 //ACTION CREATION
 // export const GetUser = (NewUser) => ({
@@ -33,7 +34,7 @@ const authError = payload => ({
 //
 export const Login = ( username, password) => dispatch => {
     dispatch({type: AUTHENTICATE})
-    return axios.post(API, {username: username, password: password}).then(result => {
+    return axios.post(login, {username: username, password: password}).then(result => {
       dispatch(authSuccess(result.data));
     }).catch(error => {
       dispatch(authError(error.response.data));
@@ -43,9 +44,9 @@ export const Login = ( username, password) => dispatch => {
 
 
 //Regiter Creators
- const Register = payload =>({
+ const Register = (Token)=>({
   type: REGISTER,
-  payload
+  payload: Token
 });
 
 const RSuccess = payload =>({
@@ -53,9 +54,15 @@ const RSuccess = payload =>({
   payload
 })
 
-export const RegisterSuccess = (dispatch) =>{
+export const RegisterSuccess = (username,password) => dispatch =>{
   dispatch({type:REGISTER})
-  return axios.post(API, {username: username, password: password})
-  .then(dispatch(Register(data)))
-  .then(dispatch(RSuccess(data)))
+  return axios.post(register, {username: username, password: password})
+  .then((result)=>{
+    dispatch(Register(result.data))
+  })
+  .catch(() =>{
+    console.log('error')
+  })
+
+  
 }

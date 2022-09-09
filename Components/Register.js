@@ -7,16 +7,18 @@ import {
 } from "react-native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { useState } from "react";
-import { useSelector, dispatch } from "react-redux";
+import { useSelector,  useDispatch } from "react-redux";
+import { RegisterSuccess } from "../redux/actions/LoginAction";
 
 function Register() {
   //connect
-  const UserRegister = useSelector((state) => state.UserRegister);
-  const [email, setEmail] = useState("");
+  const Registerr = useSelector((state) => state.UserRegister);
+  const dispatch = useDispatch();
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const HandleEmail = (text) => {
-    setEmail(text);
+    setUsername(text);
   };
 
   const HandlePassword = (text) => {
@@ -24,9 +26,19 @@ function Register() {
   };
 
   const Submit = () => {
-    console.log(email);
-    console.log(password);
+    dispatch(RegisterSuccess(username,password));
+    console.log('fail to add')
   };
+
+  
+  if(
+    Registerr.AuthRegister !==  undefined && 
+    Registerr.AuthRegister !==  "" &&
+    Registerr.AuthRegister  !== null){
+    //add the user
+    var AuthRegister =  Registerr.AuthRegister;
+    console.debug('user added')
+  }
 
   return (
     <>
@@ -37,7 +49,7 @@ function Register() {
           <TextInput
             placeholder="Email"
             style={{ marginLeft: 25 }}
-            value={email}
+            value={username}
             onChangeText={HandleEmail}
           />
         </View>

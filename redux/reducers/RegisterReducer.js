@@ -9,7 +9,7 @@ function RegisterReducer(state = initialRegister, action) {
     case REGISTER:
       return {
         ...state,
-        AuthRegister: null,
+        initialRegister: action.payload,
       };
     case REGISTER_SUCCESS:
       return {
