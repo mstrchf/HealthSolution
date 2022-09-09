@@ -1,6 +1,9 @@
 import { Image, Text, View, TouchableOpacity, StyleSheet } from "react-native";
 
 function RemoveEnable({ navigation }) {
+  // const DEnable = () => {
+  //   navigation.navigate("entry");
+  // };
   return (
     <>
       <View style={styles.profile}>
@@ -16,13 +19,13 @@ function RemoveEnable({ navigation }) {
       {/* button */}
       <View style={styles.button}>
         {/* remove button */}
-        <TouchableOpacity onPress={() => navigation.navigate("entry")}>
+        <TouchableOpacity>
           <Text style={{ color: "#41c1f9", fontWeight: "800", marginLeft: 80 }}>
             Remove
           </Text>
         </TouchableOpacity>
         {/* enable button */}
-        <TouchableOpacity onPress={() => navigation.navigate("entry")}>
+        <TouchableOpacity onPress={DEnable}>
           <Text
             style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}
           >

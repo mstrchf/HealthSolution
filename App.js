@@ -6,7 +6,7 @@ import DoctorScreen from "./Components/DoctorScreen";
 import Book from "./Components/Book";
 import DoctorProfile from "./Components/DoctorProfile";
 import Adminisrator from "./Components/Administrator";
-import EntryScreen from "./Components/EntryScreen";
+import DoctorsDetail from "./Components/DoctorsDetail";
 import Register from "./Components/Register";
 // import DrawerContent from "./Components/DrawerContent";
 import Icons from "./Components/Icons";
@@ -21,10 +21,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Provider } from "react-redux";
 import { legacy_createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import {composeWithDevTools} from 'redux-devtools-extension';
+import { composeWithDevTools } from "redux-devtools-extension";
 
 // Redux
-const store = legacy_createStore(Reducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = legacy_createStore(
+  Reducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 // stack navigator and screen
 const Stack = createNativeStackNavigator();
@@ -57,10 +60,10 @@ export default function App() {
             <Stack.Screen name="user" component={Book} />
             <Stack.Screen name="Doctors Account" component={DoctorProfile} />
             <Stack.Screen name="admin" component={Adminisrator} />
-            <Stack.Screen name="entry" component={EntryScreen} />
+            <Stack.Screen name="entry" component={DoctorsDetail} />
             {/* <Stack.Screen name="doctorsportal" component={DoctorsPortal} /> */}
             <Stack.Screen name="icon" component={Icons} />
-            <Stack.Screen name="Register" component={Register}/>
+            <Stack.Screen name="Register" component={Register} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

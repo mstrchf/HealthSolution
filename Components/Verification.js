@@ -21,7 +21,7 @@ function Verification({ navigation }) {
   //states
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState('');
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const HandlePassword = (text) => {
@@ -35,8 +35,6 @@ function Verification({ navigation }) {
   //submitButton
   const HandleSubmit = () => {
     dispatch(Login(username, password));
- 
-
   };
 
   //if the currentuser not undefine and not empty then the should login and move to the next page
@@ -47,12 +45,12 @@ function Verification({ navigation }) {
   ) {
     var currentUser = authState.currentUser;
     console.debug("redirect to the next screen");
-
   }
 
+  //authenticate and navigate to the next screen
   useEffect(() => {
     if (currentUser) {
-       navigation.navigate("Book");
+      navigation.navigate("Book");
     }
   }, [currentUser]);
 
@@ -64,8 +62,15 @@ function Verification({ navigation }) {
   ) {
     // console.debug(authState);
     // you need to display the error to the user
-    // alert('please fill in username and password');    
+    throw error("please fill in username and password");
   }
+
+  //Error Message
+  // useEffect(() => {
+  //   if (authState.error) {
+  //     setError("please fill in username and password");
+  //   }
+  // });
 
   return (
     <SafeAreaView>
@@ -86,7 +91,7 @@ function Verification({ navigation }) {
         {/* inputs */}
         <View style={styles.getAccount}>
           <Text style={styles.account}>Don't Have An Account?</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('Register')}>
+          <TouchableOpacity onPress={() => navigation.navigate("Register")}>
             <Text style={{ fontWeight: "bold", color: "#41c1f9" }}>
               Register
             </Text>
@@ -121,10 +126,8 @@ function Verification({ navigation }) {
 
           {/* sign in and loading */}
           <View>
-            
             <View>
               <TouchableOpacity style={styles.signIn} onPress={HandleSubmit}>
-
                 <Text style={{ fontWeight: "bold", color: "white" }}>
                   Sign In
                 </Text>

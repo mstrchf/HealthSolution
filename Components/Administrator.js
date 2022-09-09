@@ -29,7 +29,7 @@ function Adminisrator({ navigation }) {
                   fontWeight: "800",
                   alignSelf: "flex-end",
                   paddingTop: 50,
-                  fontSize: 16,
+                  fontSize: 20,
                   marginRight: 25,
                 }}
               >
