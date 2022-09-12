@@ -25,7 +25,7 @@ function RemoveEnable({ navigation }) {
           </Text>
         </TouchableOpacity>
         {/* enable button */}
-        <TouchableOpacity onPress={DEnable}>
+        <TouchableOpacity>
           <Text
             style={{ color: "#41c1f9", fontWeight: "800", marginRight: 20 }}
           >

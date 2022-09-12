@@ -7,12 +7,12 @@ import {
 } from "react-native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { useState } from "react";
-import { useSelector,  useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RegisterSuccess } from "../redux/actions/LoginAction";
 
 function Register() {
   //connect
-  const Registerr = useSelector((state) => state.UserRegister);
+  const Registerr = useSelector((state) => state.register);
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,18 +26,18 @@ function Register() {
   };
 
   const Submit = () => {
-    dispatch(RegisterSuccess(username,password));
-    console.log('fail to add')
+    dispatch(RegisterSuccess(username, password));
+    console.log("fail to add");
   };
 
-  
-  if(
-    Registerr.AuthRegister !==  undefined && 
-    Registerr.AuthRegister !==  "" &&
-    Registerr.AuthRegister  !== null){
+  if (
+    Registerr.AuthRegister !== undefined &&
+    Registerr.AuthRegister !== "" &&
+    Registerr.AuthRegister !== null
+  ) {
     //add the user
-    var AuthRegister =  Registerr.AuthRegister;
-    console.debug('user added')
+    var AuthRegister = Registerr.AuthRegister;
+    console.debug("user added");
   }
 
   return (

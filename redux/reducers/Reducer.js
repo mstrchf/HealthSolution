@@ -4,6 +4,6 @@ import RegisterReducer from "./RegisterReducer";
 
 const Reducer = combineReducers({
   user: LoginReducer,
-  UserRegister: RegisterReducer,
+  register: RegisterReducer,
 });
 export default Reducer;
