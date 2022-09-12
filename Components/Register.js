@@ -8,7 +8,7 @@ import {
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RegisterSuccess } from "../redux/actions/LoginAction";
+import { RRegister } from "../redux/actions/LoginAction";
 
 function Register() {
   //connect
@@ -26,8 +26,7 @@ function Register() {
   };
 
   const Submit = () => {
-    dispatch(RegisterSuccess(username, password));
-    console.log("fail to add");
+    dispatch(RRegister(username, password));
   };
 
   if (
@@ -36,8 +35,7 @@ function Register() {
     Registerr.AuthRegister !== null
   ) {
     //add the user
-    var AuthRegister = Registerr.AuthRegister;
-    console.debug("user added");
+      Registerr.AuthRegister;
   }
 
   return (

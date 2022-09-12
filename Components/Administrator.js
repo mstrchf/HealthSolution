@@ -61,11 +61,5 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 10,
   },
-  // button:{
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   padding:10,
-
-  // }
 });
 export default Adminisrator;

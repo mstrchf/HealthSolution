@@ -52,4 +52,18 @@ const registerFail = (payload) => ({
   payload,
 });
 
-export const Register = () => {};
+export const RRegister = (username, password) => dispatch => {
+  dispatch({type:REGISTER_SUCCESS});
+    return axios.post(register,{username: username, password: password})
+    .then((response) =>{
+      dispatch(registerSuccess(response.data));
+      console.debug(response);
+
+      // return data;
+    })
+    .catch((error) =>{
+      dispatch(registerFail(error));
+      console.debug("could not register")
+    })
+  
+};

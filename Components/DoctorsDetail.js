@@ -6,9 +6,55 @@ import {
   StyleSheet,
   TouchableOpacity,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
+import  {useState} from "react";
 function DoctorsDetail({ navigation }) {
+
+  //state
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [spacialise, setSpacialise] = useState("");
+  const [age, setAge] = useState ("");
+  const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
+
+const HandleFirstName = (text) =>{
+  setFirstName(text)
+}
+const HandleLastName = (text) =>{
+  setLastName(text)
+}
+
+const HandleSpacialise = (text) =>{
+  setSpacialise(text)
+}
+
+const HandleAge = (text) =>{
+  setAge(text)
+}
+
+const HandleEmail = (text) =>{
+  setEmail(text)
+}
+
+const HandleNumber = (text) =>{
+  setNumber(text)
+}
+
+
+//submitButton
+const Complete = () =>{
+  console.log(firstName)
+  console.log(lastName)
+  console.log(spacialise)
+  console.log(age)
+  console.log(email)
+  console.log(number)
+
+}
+
   return (
     <SafeAreaView>
       <ImageBackground
@@ -16,6 +62,7 @@ function DoctorsDetail({ navigation }) {
         resizeMode="cover"
         style={{ height: "100%" }}
       >
+        <ScrollView>
         <View style={styles.header}>
           <Text style={{ fontWeight: "800", fontSize: 20 }}>
             Doctors Detail
@@ -31,15 +78,20 @@ function DoctorsDetail({ navigation }) {
           <View style={styles.inputText}>
             <TextInput
               placeholder="Doctor Name "
-              style={{ fontWeight: "600", fontSize: 16 }}
+              value={firstName}
+              onChangeText={HandleFirstName}
+              style={{  fontSize: 18 }}
             />
           </View>
 
           {/* surname */}
           <View style={styles.inputText}>
             <TextInput
-              placeholder="Surname"
+              placeholder="Last Name"
               style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
+              value={lastName}
+              onChangeText={HandleLastName}
+             
             />
           </View>
           {/* Specialisation */}
@@ -47,6 +99,8 @@ function DoctorsDetail({ navigation }) {
             <TextInput
               placeholder="Specialization"
               style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
+              value={spacialise}
+              onChangeText={HandleSpacialise}
             />
           </View>
           {/* Age */}
@@ -54,6 +108,8 @@ function DoctorsDetail({ navigation }) {
             <TextInput
               placeholder="Age"
               style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
+              value={age}
+              onChangeText={HandleAge}
             />
           </View>
 
@@ -62,6 +118,8 @@ function DoctorsDetail({ navigation }) {
             <TextInput
               placeholder="Email"
               style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
+              value={email}
+              onChangeText={HandleEmail}
             />
           </View>
           {/* number */}
@@ -69,6 +127,8 @@ function DoctorsDetail({ navigation }) {
             <TextInput
               placeholder="Phone Number"
               style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
+              value={number}
+              onChangeText={HandleNumber}
             />
           </View>
         </View>
@@ -82,7 +142,7 @@ function DoctorsDetail({ navigation }) {
             padding: 30,
           }}
         >
-          <TouchableOpacity>
+          <TouchableOpacity onPress={Complete}>
             <Text style={styles.completebutton}>Complete</Text>
           </TouchableOpacity>
 
@@ -91,6 +151,7 @@ function DoctorsDetail({ navigation }) {
             <Text style={styles.cancelbutton}>Cancel</Text>
           </TouchableOpacity>
         </View>
+        </ScrollView>
       </ImageBackground>
     </SafeAreaView>
   );
