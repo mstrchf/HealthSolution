@@ -55,27 +55,16 @@ function DoctorScreen({ navigation }) {
         {/* doctors profile */}
         <View>
           <Text
-            style={{
-              fontWeight: "800",
-              fontSize: 17,
-              paddingBottom: 30,
-              paddingTop: 30,
-              paddingLeft: 6,
-            }}
+            style={styles.book}
           >
             Book An Appointment
           </Text>
+          </View>
           {/* doctorsProfile */}
           <View>
             <Doctor />
-            <Doctor />
-            <Doctor />
-            <Doctor />
-            <Doctor />
-            <Doctor />
-            <Doctor />
+           
           </View>
-        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -96,5 +85,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#41c1f9",
     borderRadius: 15,
   },
+ 
+  book:{
+   
+    fontWeight: "800",
+    fontSize: 17,
+    paddingBottom: 30,
+    paddingTop: 30,
+    paddingLeft: 6,
+  },
+
+
+   
 });
 export default DoctorScreen;

@@ -10,7 +10,7 @@ import {
   import DoctorsModal from "./DoctorsModal";
 
   
-function Doctor(){
+function Doctor({navigation}){
 
 
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -58,6 +58,19 @@ function Doctor(){
 
             </View>
           </View>
+
+           {/* button */}
+             <View style={styles.button}>
+                <TouchableOpacity>
+                  <Text style={styles.remove}>Remove</Text>
+                </TouchableOpacity>
+
+                
+                <TouchableOpacity onPress={() => navigation.navigate("entry")}  >
+                  <Text  style={styles.update}>Update</Text>
+                </TouchableOpacity>
+              </View>
+             
           
           
         </>
@@ -70,5 +83,24 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       padding: 10,
     },
+    button:{
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      borderTopWidth: 0.5,
+    },
+    remove:{
+      marginTop: 10,
+      color: "#41c1f9", 
+       fontWeight: "800",
+        marginLeft: 90
+
+    },
+    update:{
+      color: "#41c1f9", 
+      fontWeight: "800",
+       marginRight: 20,
+       marginTop: 10
+    }
+   
   });
 export default Doctor;

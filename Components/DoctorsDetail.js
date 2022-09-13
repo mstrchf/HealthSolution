@@ -10,12 +10,16 @@ import {
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import  {useState} from "react";
+import {useSelector, useDispatch} from 'react-redux'
+import { AddDoctor, DeleteDoctor, UpdateDoctor } from "../redux/actions/DoctorAction";
 function DoctorsDetail({ navigation }) {
+  const Crud  = useSelector((state) => state.doctor)
+  const dispatch =  useDispatch();
 
   //state
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [spacialise, setSpacialise] = useState("");
+  const [spacialization, setSpacialization] = useState("");
   const [age, setAge] = useState ("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -28,7 +32,7 @@ const HandleLastName = (text) =>{
 }
 
 const HandleSpacialise = (text) =>{
-  setSpacialise(text)
+  setSpacialization(text)
 }
 
 const HandleAge = (text) =>{
@@ -46,15 +50,23 @@ const HandleNumber = (text) =>{
 
 //submitButton
 const Complete = () =>{
-  console.log(firstName)
-  console.log(lastName)
-  console.log(spacialise)
-  console.log(age)
-  console.log(email)
-  console.log(number)
-
+  dispatch(AddDoctor,DeleteDoctor,UpdateDoctor(firstName,lastName,spacialization,age,email,number));
+  // console.log(firstName)
+  // console.log(lastName)
+  // console.log(spacialise)
+  // console.log(age)
+  // console.log(email)
+  // console.log(number)
 }
 
+
+if(Crud.data !== "" && Crud.data !== undefined && Crud.data !== null  ){
+  Crud.data
+}
+
+if(Crud.data !== "" && Crud.data !== undefined && Crud.data !== null  ){
+  ("")
+}
   return (
     <SafeAreaView>
       <ImageBackground
@@ -80,15 +92,16 @@ const Complete = () =>{
               placeholder="Doctor Name "
               value={firstName}
               onChangeText={HandleFirstName}
-              style={{  fontSize: 18 }}
+              style={{fontSize: 18}}
             />
           </View>
 
           {/* surname */}
           <View style={styles.inputText}>
             <TextInput
+             style={styles.inputStyle}
               placeholder="Last Name"
-              style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
+              
               value={lastName}
               onChangeText={HandleLastName}
              
@@ -97,17 +110,19 @@ const Complete = () =>{
           {/* Specialisation */}
           <View style={styles.inputText}>
             <TextInput
+             style={styles.inputStyle}
               placeholder="Specialization"
-              style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
-              value={spacialise}
+              
+              value={spacialization}
               onChangeText={HandleSpacialise}
             />
           </View>
           {/* Age */}
           <View style={styles.inputText}>
             <TextInput
+             style={styles.inputStyle}
               placeholder="Age"
-              style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
+              
               value={age}
               onChangeText={HandleAge}
             />
@@ -116,8 +131,9 @@ const Complete = () =>{
           {/* email */}
           <View style={styles.inputText}>
             <TextInput
+             style={styles.inputStyle}
               placeholder="Email"
-              style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
+              
               value={email}
               onChangeText={HandleEmail}
             />
@@ -125,8 +141,9 @@ const Complete = () =>{
           {/* number */}
           <View style={styles.inputText}>
             <TextInput
+             style={styles.inputStyle}
               placeholder="Phone Number"
-              style={{ paddingTop: 45, fontWeight: "600", fontSize: 16 }}
+              
               value={number}
               onChangeText={HandleNumber}
             />
@@ -195,5 +212,9 @@ const styles = StyleSheet.create({
     padding: 25,
     marginTop: 20,
   },
+  inputStyle:{
+    fontSize: 18,
+    paddingTop: 45
+  }
 });
 export default DoctorsDetail;
