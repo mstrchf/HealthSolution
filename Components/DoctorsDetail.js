@@ -64,9 +64,7 @@ if(Crud.data !== "" && Crud.data !== undefined && Crud.data !== null  ){
   Crud.data
 }
 
-if(Crud.data !== "" && Crud.data !== undefined && Crud.data !== null  ){
-  ("")
-}
+
   return (
     <SafeAreaView>
       <ImageBackground
