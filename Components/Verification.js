@@ -76,9 +76,9 @@ function Verification({ navigation }) {
           {/* arrow with sin up */}
           <View style={styles.headerSign}>
             <Text style={{ fontWeight: "800", fontSize: 17 }}>Sign Up</Text>
-            {/* <TouchableOpacity onPress={() => navigation.navigate("Book")}>
+            <TouchableOpacity onPress={() => navigation.navigate("Book")}>
               <AntDesign name="arrowright" size={30} />
-            </TouchableOpacity> */}
+            </TouchableOpacity>
           </View>
         </ImageBackground>
         {/* inputs */}
