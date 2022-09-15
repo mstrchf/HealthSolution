@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   AddDoctor,
@@ -53,40 +53,34 @@ function DoctorsDetail({ navigation }) {
 
   //submitButton
   const Complete = () => {
-    dispatch(
-      AddDoctor,
-      DeleteDoctor,
-      UpdateDoctor(firstName, lastName, spacialization, age, email, number)
-    );
-    // console.log(firstName);
-    // console.log(lastName);
-    // console.log(spacialization);
-    // console.log(age);
-    // console.log(email);
-    // console.log(number);
+    console.log(firstName);
+    console.log(lastName);
+    console.log(spacialization);
+    console.log(age);
+    console.log(email);
+    console.log(number);
+    dispatch(AddDoctor(firstName, lastName, spacialization, age, email, number));
+    
   };
 
-<<<<<<< HEAD
-//submitButton
-const Complete = () =>{
-  dispatch(AddDoctor,DeleteDoctor,UpdateDoctor(firstName,lastName,spacialization,age,email,number));
-  // console.log(firstName)
-  // console.log(lastName)
-  // console.log(spacialise)
-  // console.log(age)
-  // console.log(email)
-  // console.log(number)
-}
+  //Create Doctor
+  if(CreateDoctor !== ""  && CreateDoctor !== null && CreateDoctor !== undefined)
+  {
+    console.log(CreateDoctor)
+    // CreateDoctor;
+  }else{
+    console("can not add a doctor")
+  }
 
+  // useEffect(() =>{
+  //   if(CreateDoctor){
 
-if(Crud.data !== "" && Crud.data !== undefined && Crud.data !== null  ){
-  Crud.data
-}
+  //   navigation.navigate("Book");
+  //   }
+  // })
 
-
-=======
   
->>>>>>> de41d90ec9da019dc3da11d010f39bca2f4446f5
+
   return (
     <SafeAreaView>
       <ImageBackground

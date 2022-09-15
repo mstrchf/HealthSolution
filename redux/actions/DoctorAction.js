@@ -17,7 +17,7 @@ const addDoctor = (NewDoctor) => ({
   payload: NewDoctor,
 });
 
-const addFail = () => ({
+const addFail = (payload) => ({
   type: ADD_FAIL,
   payload,
 });
@@ -37,28 +37,29 @@ const updateDoctor = (DoctorUpdate) => ({
   payload: DoctorUpdate,
 });
 
-const updateFail = () => ({
+const updateFail = (payload) => ({
   type: UPDATE_FAIL,
   payload,
 });
 
 export const AddDoctor =
-  (FirstName, LastName, Specialization, PhoneNumer, Email) => (dispatch) => {
+  (Firstname, Lastname, Specialization, Phonenumber, Email) => (dispatch) => {
     dispatch({ type: ADD_DOCTOR });
     return axios
       .post(Add, {
-        FirstName: FirstName,
-        LastName: LastName,
-        Specialization: Specialization,
-        PhoneNumer: PhoneNumer,
+        Firstname: Firstname,
+        Lastname: Lastname,
+        Spacialization: Specialization,
+        Phonenumber: Phonenumber,
         Email: Email,
       })
       .then((data) => {
-        dispatch(addDoctor(data));
-        console.log(data);
+        dispatch(addDoctor(data.data));
+        console.log(data.data);
       })
       .catch((error) => {
         dispatch(addFail(error));
+        console.debug(error.response.data)
         console.log("error from add");
       });
   };
