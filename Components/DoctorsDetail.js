@@ -9,45 +9,64 @@ import {
   ScrollView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import  {useState} from "react";
-import {useSelector, useDispatch} from 'react-redux'
-import { AddDoctor, DeleteDoctor, UpdateDoctor } from "../redux/actions/DoctorAction";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  AddDoctor,
+  DeleteDoctor,
+  UpdateDoctor,
+} from "../redux/actions/DoctorAction";
 function DoctorsDetail({ navigation }) {
-  const Crud  = useSelector((state) => state.doctor)
-  const dispatch =  useDispatch();
+  const CreateDoctor = useSelector((state) => state.doctor);
+  const dispatch = useDispatch();
 
   //state
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [spacialization, setSpacialization] = useState("");
-  const [age, setAge] = useState ("");
+  const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
 
-const HandleFirstName = (text) =>{
-  setFirstName(text)
-}
-const HandleLastName = (text) =>{
-  setLastName(text)
-}
+  const HandleFirstName = (text) => {
+    setFirstName(text);
+  };
+  const HandleLastName = (text) => {
+    setLastName(text);
+  };
 
-const HandleSpacialise = (text) =>{
-  setSpacialization(text)
-}
+  const HandleSpacialise = (text) => {
+    setSpacialization(text);
+  };
 
-const HandleAge = (text) =>{
-  setAge(text)
-}
+  const HandleAge = (text) => {
+    setAge(text);
+  };
 
-const HandleEmail = (text) =>{
-  setEmail(text)
-}
+  const HandleEmail = (text) => {
+    setEmail(text);
+  };
 
-const HandleNumber = (text) =>{
-  setNumber(text)
-}
+  const HandleNumber = (text) => {
+    setNumber(text);
+  };
 
+  //submitButton
+  const Complete = () => {
+    dispatch(
+      AddDoctor,
+      DeleteDoctor,
+      UpdateDoctor(firstName, lastName, spacialization, age, email, number)
+    );
+    // console.log(firstName);
+    // console.log(lastName);
+    // console.log(spacialization);
+    // console.log(age);
+    // console.log(email);
+    // console.log(number);
+  };
 
+<<<<<<< HEAD
 //submitButton
 const Complete = () =>{
   dispatch(AddDoctor,DeleteDoctor,UpdateDoctor(firstName,lastName,spacialization,age,email,number));
@@ -65,6 +84,9 @@ if(Crud.data !== "" && Crud.data !== undefined && Crud.data !== null  ){
 }
 
 
+=======
+  
+>>>>>>> de41d90ec9da019dc3da11d010f39bca2f4446f5
   return (
     <SafeAreaView>
       <ImageBackground
@@ -73,99 +95,93 @@ if(Crud.data !== "" && Crud.data !== undefined && Crud.data !== null  ){
         style={{ height: "100%" }}
       >
         <ScrollView>
-        <View style={styles.header}>
-          <Text style={{ fontWeight: "800", fontSize: 20 }}>
-            Doctors Detail
-          </Text>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("doctorsportal")}
+          <View style={styles.header}>
+            <Text style={{ fontWeight: "800", fontSize: 20 }}>
+              Doctors Detail
+            </Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("doctorsportal")}
+            >
+              <AntDesign name="arrowright" size={30} color="black" />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.input}>
+            {/* name */}
+            <View style={styles.inputText}>
+              <TextInput
+                placeholder="Doctor Name "
+                value={firstName}
+                onChangeText={HandleFirstName}
+                style={{ fontSize: 18 }}
+              />
+            </View>
+
+            {/* surname */}
+            <View style={styles.inputText}>
+              <TextInput
+                style={styles.inputStyle}
+                placeholder="Last Name"
+                value={lastName}
+                onChangeText={HandleLastName}
+              />
+            </View>
+            {/* Specialisation */}
+            <View style={styles.inputText}>
+              <TextInput
+                style={styles.inputStyle}
+                placeholder="Specialization"
+                value={spacialization}
+                onChangeText={HandleSpacialise}
+              />
+            </View>
+            {/* Age */}
+            <View style={styles.inputText}>
+              <TextInput
+                style={styles.inputStyle}
+                placeholder="Age"
+                value={age}
+                onChangeText={HandleAge}
+              />
+            </View>
+
+            {/* email */}
+            <View style={styles.inputText}>
+              <TextInput
+                style={styles.inputStyle}
+                placeholder="Email"
+                value={email}
+                onChangeText={HandleEmail}
+              />
+            </View>
+            {/* number */}
+            <View style={styles.inputText}>
+              <TextInput
+                style={styles.inputStyle}
+                placeholder="Phone Number"
+                value={number}
+                onChangeText={HandleNumber}
+              />
+            </View>
+          </View>
+
+          {/* TouchableOpacity */}
+          {/* complete */}
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              padding: 30,
+            }}
           >
-            <AntDesign name="arrowright" size={30} color="black" />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.input}>
-          {/* name */}
-          <View style={styles.inputText}>
-            <TextInput
-              placeholder="Doctor Name "
-              value={firstName}
-              onChangeText={HandleFirstName}
-              style={{fontSize: 18}}
-            />
-          </View>
+            <TouchableOpacity onPress={Complete}>
+              <Text style={styles.completebutton}>Complete</Text>
+            </TouchableOpacity>
 
-          {/* surname */}
-          <View style={styles.inputText}>
-            <TextInput
-             style={styles.inputStyle}
-              placeholder="Last Name"
-              
-              value={lastName}
-              onChangeText={HandleLastName}
-             
-            />
+            {/* cancel */}
+            <TouchableOpacity>
+              <Text style={styles.cancelbutton}>Cancel</Text>
+            </TouchableOpacity>
           </View>
-          {/* Specialisation */}
-          <View style={styles.inputText}>
-            <TextInput
-             style={styles.inputStyle}
-              placeholder="Specialization"
-              
-              value={spacialization}
-              onChangeText={HandleSpacialise}
-            />
-          </View>
-          {/* Age */}
-          <View style={styles.inputText}>
-            <TextInput
-             style={styles.inputStyle}
-              placeholder="Age"
-              
-              value={age}
-              onChangeText={HandleAge}
-            />
-          </View>
-
-          {/* email */}
-          <View style={styles.inputText}>
-            <TextInput
-             style={styles.inputStyle}
-              placeholder="Email"
-              
-              value={email}
-              onChangeText={HandleEmail}
-            />
-          </View>
-          {/* number */}
-          <View style={styles.inputText}>
-            <TextInput
-             style={styles.inputStyle}
-              placeholder="Phone Number"
-              
-              value={number}
-              onChangeText={HandleNumber}
-            />
-          </View>
-        </View>
-
-        {/* TouchableOpacity */}
-        {/* complete */}
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            padding: 30,
-          }}
-        >
-          <TouchableOpacity onPress={Complete}>
-            <Text style={styles.completebutton}>Complete</Text>
-          </TouchableOpacity>
-
-          {/* cancel */}
-          <TouchableOpacity>
-            <Text style={styles.cancelbutton}>Cancel</Text>
-          </TouchableOpacity>
-        </View>
         </ScrollView>
       </ImageBackground>
     </SafeAreaView>
@@ -210,9 +226,9 @@ const styles = StyleSheet.create({
     padding: 25,
     marginTop: 20,
   },
-  inputStyle:{
+  inputStyle: {
     fontSize: 18,
-    paddingTop: 45
-  }
+    paddingTop: 45,
+  },
 });
 export default DoctorsDetail;
