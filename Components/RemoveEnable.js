@@ -1,8 +1,12 @@
 import { Image, Text, View, TouchableOpacity, StyleSheet, Modal } from "react-native";
 import{useState} from 'react';
 import DoctorsModal from "./DoctorsModal";
+import{useDispatch,useSelector} from 'react-redux';
+import{DeleteDoctor,UpdateDoctor} from '../redux/actions/DoctorAction';
 
 function RemoveEnable({ navigation }) {
+  const deleteDoctor = useSelector((state)=> state.doctor)
+  const  dispatch = useDispatch();
   
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [chooseData, setChooseData] = useState();
@@ -15,7 +19,15 @@ function RemoveEnable({ navigation }) {
     const setData = (data) => {
       setChooseData(data);
     };
-
+    //Delete
+    const HandleDelete = () =>{
+      dispatch(DeleteDoctor())
+    }
+    if(deleteDoctor.CurrentDoctor){
+      deleteDoctor.CurrentDoctor('');
+    }else{
+      console.log('can not delete')
+    }
 
   return (
     <>
@@ -51,7 +63,7 @@ function RemoveEnable({ navigation }) {
 
            {/* button */}
              <View style={styles.button}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={HandleDelete}>
                   <Text style={styles.remove}>Remove</Text>
                 </TouchableOpacity>
 

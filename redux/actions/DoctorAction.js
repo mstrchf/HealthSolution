@@ -67,14 +67,16 @@ export const AddDoctor =
 export const DeleteDoctor = (Id) => (dispatch) => {
   dispatch({ type: DELETE_DOCTOR });
   return axios
-    .delete(Delete, { FirstName, LastName, Specialization, PhoneNumer, Email })
+    .delete(Delete, Id)
     .then((data) => {
       dispatch(deleteDoctor(data));
+      console.debug(response.data)
       console.log(data);
     })
     .catch((error) => {
       dispatch(deleteFail(error));
-      console.log("can not delete");
+      console.debug(error.response.data)
+      // console.log("can not delete");
     });
 };
 

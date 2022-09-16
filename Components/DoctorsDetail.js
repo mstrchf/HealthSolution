@@ -11,11 +11,7 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  AddDoctor,
-  DeleteDoctor,
-  UpdateDoctor,
-} from "../redux/actions/DoctorAction";
+import {AddDoctor,} from "../redux/actions/DoctorAction";
 function DoctorsDetail({ navigation }) {
   const CreateDoctor = useSelector((state) => state.doctor);
   const dispatch = useDispatch();
@@ -53,29 +49,25 @@ function DoctorsDetail({ navigation }) {
 
   //submitButton
   const Complete = () => {
-    console.log(firstName);
-    console.log(lastName);
-    console.log(spacialization);
-    console.log(age);
-    console.log(email);
-    console.log(number);
+    // console.log(firstName);
+    // console.log(lastName);
+    // console.log(spacialization);
+    // console.log(age);
+    // console.log(email);
+    // console.log(number);
     dispatch(AddDoctor(firstName, lastName, spacialization, age, email, number));
     
   };
 
   //Create Doctor
-  if(CreateDoctor !== ""  && CreateDoctor !== null && CreateDoctor !== undefined)
+  if(CreateDoctor.CurrentDoctor !== ""  && CreateDoctor.CurrentDoctor !== null && CreateDoctor.CurrentDoctor !== undefined)
   {
-    console.log(CreateDoctor)
+    CreateDoctor.CurrentDoctor
     // CreateDoctor;
-  }else{
-    console("can not add a doctor")
   }
 
   // useEffect(() =>{
-  //   if(CreateDoctor){
-
-  //   navigation.navigate("Book");
+  //   if(CreateDoctor.CurrentDoctor){
   //   }
   // })
 
@@ -132,7 +124,7 @@ function DoctorsDetail({ navigation }) {
             <View style={styles.inputText}>
               <TextInput
                 style={styles.inputStyle}
-                placeholder="Age"
+                placeholder="Phonenumber"
                 value={age}
                 onChangeText={HandleAge}
               />
@@ -151,7 +143,7 @@ function DoctorsDetail({ navigation }) {
             <View style={styles.inputText}>
               <TextInput
                 style={styles.inputStyle}
-                placeholder="Phone Number"
+                placeholder="Age"
                 value={number}
                 onChangeText={HandleNumber}
               />
