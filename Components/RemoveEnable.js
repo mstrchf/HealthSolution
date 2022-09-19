@@ -21,13 +21,13 @@ function RemoveEnable({ navigation }) {
     };
     //Delete
     const HandleDelete = () =>{
-      dispatch(DeleteDoctor())
+      dispatch(DeleteDoctor)
     }
-    if(deleteDoctor.CurrentDoctor){
-      deleteDoctor.CurrentDoctor('');
-    }else{
-      console.log('can not delete')
-    }
+    // if(deleteDoctor.CurrentDoctor){
+    //   deleteDoctor.CurrentDoctor('');
+    // }else{
+    //   console.log('can not delete')
+    // }
 
   return (
     <>

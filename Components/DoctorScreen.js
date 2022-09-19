@@ -23,7 +23,7 @@ function DoctorScreen({ navigation }) {
       <ScrollView>
         {/* header */}
         <View style={styles.headerDetails}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("user")}>
             <Ionicons name="menu" size={35} color="black" />
           </TouchableOpacity>
           <Text style={{ fontSize: 20, fontWeight: "800", marginRight: 100 }}>
