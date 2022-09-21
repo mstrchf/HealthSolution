@@ -55,21 +55,22 @@ function DoctorsDetail({ navigation }) {
     // console.log(age);
     // console.log(email);
     // console.log(number);
-    dispatch(AddDoctor(firstName, lastName, spacialization, age, email, number));
-    
+    dispatch(AddDoctor(firstName, lastName, spacialization, age, email, number))
+    // navigation.navigate('Book')
   };
+
+  // useEffect(() =>{
+  //   AddDoctor
+  //   // navigation.navigate('Book')
+  // }, [])
 
   //Create Doctor
   if(CreateDoctor.CurrentDoctor !== ""  && CreateDoctor.CurrentDoctor !== null && CreateDoctor.CurrentDoctor !== undefined)
   {
-    CreateDoctor.CurrentDoctor
-    // CreateDoctor;
+       CreateDoctor.CurrentDoctor
   }
 
-  // useEffect(() =>{
-  //   if(CreateDoctor.CurrentDoctor){
-  //   }
-  // })
+ 
 
   
 
@@ -199,7 +200,7 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     width: 120,
     height: 60,
-    // alignSelf: "center",
+
     paddingLeft: 30,
     paddingTop: 15,
     borderRadius: 15,

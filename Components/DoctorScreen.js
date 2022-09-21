@@ -13,10 +13,16 @@ import {
   MaterialCommunityIcons,
   FontAwesome5,
 } from "@expo/vector-icons";
-import React, { useState } from "react";
+import React, { useState,useEffect} from "react";
 import Doctor from "./Doctor";
+import {AddDoctor,} from "../redux/actions/DoctorAction";
 
-function DoctorScreen({ navigation }) {
+
+
+
+function DoctorScreen({ navigation}) {
+
+ 
   return (
     <SafeAreaView style={{ marginHorizontal: 10 }}>
       {/* <Text>{chooseData}</Text> */}
@@ -62,7 +68,13 @@ function DoctorScreen({ navigation }) {
           </View>
           {/* doctorsProfile */}
           <View>
-            <Doctor />
+            {
+              
+                  <Doctor />
+               
+            }
+            
+
            
           </View>
       </ScrollView>

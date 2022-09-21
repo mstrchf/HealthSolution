@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     marginLeft: 40,
     justifyContent: "space-between",
-    paddingTop: 50,
+    paddingTop: 35,
   },
   goArror: {
     fontWeight: "bold",
-    marginTop: 360,
+    marginTop: 300,
     backgroundColor: "pink",
     height: 60,
     textAlign: "center",

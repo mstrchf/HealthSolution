@@ -56,7 +56,7 @@ export default function App() {
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Verification" component={Verification} />
 
-            <Stack.Screen name="Book" component={DoctorScreen} />
+            <Stack.Screen name="Book" component={DoctorScreen}/>
             <Stack.Screen name="user" component={Book} />
             <Stack.Screen name="Doctors Account" component={DoctorProfile} />
             <Stack.Screen name="admin" component={Adminisrator} />

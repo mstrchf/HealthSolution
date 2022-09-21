@@ -68,7 +68,7 @@ function Register() {
           <View>
             <TouchableOpacity style={styles.signIn} onPress={Submit}>
               <Text style={{ fontWeight: "bold", color: "white" }}>
-                Sign In
+                Register
               </Text>
             </TouchableOpacity>
           </View>
@@ -99,10 +99,10 @@ const styles = StyleSheet.create({
   signIn: {
     marginTop: 50,
     height: 70,
-    width: 370,
+    width: 320,
     borderRadius: 15,
     alignItems: "center",
-    paddingTop: 19,
+    paddingTop: 20,
     backgroundColor: "#41c1f9",
     marginTop: 90,
   },

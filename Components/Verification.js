@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
   signIn: {
     marginTop: 50,
     height: 70,
-    width: 370,
+    width: 320,
     borderRadius: 15,
     alignItems: "center",
     paddingTop: 19,

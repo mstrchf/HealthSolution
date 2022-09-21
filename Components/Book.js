@@ -70,7 +70,7 @@ function Book({ navigation }) {
               style={{ marginLeft: 115 }}
               onPress={() => navigation.navigate("Doctors Account")}
             />
-          </View>m 
+          </View>
           <Text>Please Fill Out The ForBelow To Make An </Text>
           <Text style={{ paddingBottom: 30 }}>Appointment</Text>
         </View>
