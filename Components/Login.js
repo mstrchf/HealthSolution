@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     // alignItems: "center",
     marginLeft: 40,
     justifyContent: "space-between",
-    paddingTop: 35,
+    paddingTop: 20,
   },
   goArror: {
     fontWeight: "bold",

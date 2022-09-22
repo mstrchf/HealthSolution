@@ -22,14 +22,12 @@ const addFail = (payload) => ({
   payload,
 });
 
-const deleteDoctor = (Id) => ({
+const deleteDoctor = () => ({
   type: DELETE_DOCTOR,
-  payload: Id,
 });
 
-const deleteFail = (Id) => ({
+const deleteFail = () => ({
   type: DELETE_FAIL,
-  payload: Id,
 });
 
 const updateDoctor = (DoctorUpdate) => ({
@@ -43,7 +41,7 @@ const updateFail = (payload) => ({
 });
 
 export const AddDoctor =
-  (Firstname, Lastname, Specialization, Phonenumber, Email) => (dispatch) => {
+  (Firstname, Lastname, Specialization, Phonenumber, Email,Age) => (dispatch) => {
     dispatch({ type: ADD_DOCTOR });
     return axios
       .post(Add, {
@@ -52,6 +50,7 @@ export const AddDoctor =
         Spacialization: Specialization,
         Phonenumber: Phonenumber,
         Email: Email,
+        Age: Age
       })
       .then((data) => {
         dispatch(addDoctor(data.data));
@@ -64,14 +63,14 @@ export const AddDoctor =
       });
   };
 
-export const DeleteDoctor = (Id) => (dispatch) => {
+export const DeleteDoctor = (id) => (dispatch) => {
   dispatch({ type: DELETE_DOCTOR });
   return axios
-    .delete(Delete, Id)
-    .then((data) => {
-      dispatch(deleteDoctor(data));
+    .delete(Delete,{id})
+    .then((response) => {
+      dispatch(deleteDoctor());
       console.debug(response.data)
-      console.log(data);
+      // console.log(data);
     })
     .catch((error) => {
       dispatch(deleteFail(error));
@@ -81,7 +80,7 @@ export const DeleteDoctor = (Id) => (dispatch) => {
 };
 
 export const UpdateDoctor =
-  (FirstName, LastName, Specialization, PhoneNumer, Email) => (dispatch) => {
+  (FirstName, LastName, Specialization, PhoneNumer, Email,Age)=> (dispatch) => {
     dispatch({ type: UPDATE_DOCTOR });
     return axios
       .put(Update, {
@@ -90,6 +89,7 @@ export const UpdateDoctor =
         Specialization: Specialization,
         PhoneNumer: PhoneNumer,
         Email: Email,
+        Age:Age
       })
       .then((data) => {
         dispatch(updateDoctor(data));

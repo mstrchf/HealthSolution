@@ -3,6 +3,7 @@ import { ADD_DOCTOR, UPDATE_DOCTOR, DELETE_DOCTOR } from "../actions/DoctorActio
 
 const initialDoctor = {
     CurrentDoctor: null,
+    loading: true,
 }
 // {
 //     Details: null,
@@ -24,6 +25,7 @@ function DoctorReducer (state = initialDoctor,action){
                 ...state,
                  CurrentDoctor:
                  action.payload,
+                 loading: false,
             }
             case UPDATE_DOCTOR:
                 return{
@@ -32,9 +34,9 @@ function DoctorReducer (state = initialDoctor,action){
 
             case DELETE_DOCTOR:
                 return {
-                    ...state
+                    ...state,
+                    loading: false,
                 }
-                // .filter((item) => item.id !== action.payload)
             default:
             return state;    
     }

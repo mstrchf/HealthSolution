@@ -55,7 +55,7 @@ function DoctorsDetail({ navigation }) {
     // console.log(age);
     // console.log(email);
     // console.log(number);
-    dispatch(AddDoctor(firstName, lastName, spacialization, age, email, number))
+    dispatch(AddDoctor(firstName, lastName, spacialization, email, number ,age))
     // navigation.navigate('Book')
   };
 
@@ -65,7 +65,9 @@ function DoctorsDetail({ navigation }) {
   // }, [])
 
   //Create Doctor
-  if(CreateDoctor.CurrentDoctor !== ""  && CreateDoctor.CurrentDoctor !== null && CreateDoctor.CurrentDoctor !== undefined)
+  if(CreateDoctor.CurrentDoctor !== ""  && 
+      CreateDoctor.CurrentDoctor !== null &&
+      CreateDoctor.CurrentDoctor !== undefined)
   {
        CreateDoctor.CurrentDoctor
   }
@@ -126,8 +128,8 @@ function DoctorsDetail({ navigation }) {
               <TextInput
                 style={styles.inputStyle}
                 placeholder="Phonenumber"
-                value={age}
-                onChangeText={HandleAge}
+                value={number}
+                onChangeText={HandleNumber}
               />
             </View>
 
@@ -145,8 +147,8 @@ function DoctorsDetail({ navigation }) {
               <TextInput
                 style={styles.inputStyle}
                 placeholder="Age"
-                value={number}
-                onChangeText={HandleNumber}
+                value={age}
+                onChangeText={HandleAge}
               />
             </View>
           </View>
@@ -165,7 +167,7 @@ function DoctorsDetail({ navigation }) {
             </TouchableOpacity>
 
             {/* cancel */}
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('Book')}>
               <Text style={styles.cancelbutton}>Cancel</Text>
             </TouchableOpacity>
           </View>

@@ -6,6 +6,8 @@ import{DeleteDoctor,UpdateDoctor} from '../redux/actions/DoctorAction';
 
 function RemoveEnable({ navigation }) {
   const deleteDoctor = useSelector((state)=> state.doctor)
+  // const CreateDoctor = useSelector((state) => state.doctor);
+
   const  dispatch = useDispatch();
   
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -20,8 +22,10 @@ function RemoveEnable({ navigation }) {
       setChooseData(data);
     };
     //Delete
-    const HandleDelete = () =>{
-      dispatch(DeleteDoctor)
+    const HandleDelete = (id) =>{
+      if(window.confirm('are you sure you want to delete this doctor')){
+        dispatch(DeleteDoctor(id))
+      }
     }
     // if(deleteDoctor.CurrentDoctor){
     //   deleteDoctor.CurrentDoctor('');
@@ -63,7 +67,7 @@ function RemoveEnable({ navigation }) {
 
            {/* button */}
              <View style={styles.button}>
-                <TouchableOpacity onPress={HandleDelete}>
+                <TouchableOpacity onPress={() => HandleDelete(deleteDoctor.id)}>
                   <Text style={styles.remove}>Remove</Text>
                 </TouchableOpacity>
 

@@ -61,13 +61,13 @@ function Book({ navigation }) {
       <ScrollView>
         <View style={styles.headertext}>
           <View style={styles.header}>
-            <Text style={{ fontWeight: "bold", fontSize: 18 }}>
+            <Text style={{ fontWeight: "bold", fontSize: 18, }}>
               Book an Appointment
             </Text>
             <AntDesign
               name="arrowright"
               size={30}
-              style={{ marginLeft: 115 }}
+              style={{ marginLeft: 95 }}
               onPress={() => navigation.navigate("Doctors Account")}
             />
           </View>
