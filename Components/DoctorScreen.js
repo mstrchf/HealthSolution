@@ -15,13 +15,32 @@ import {
 } from "@expo/vector-icons";
 import React, { useState,useEffect} from "react";
 import Doctor from "./Doctor";
-import {AddDoctor,} from "../redux/actions/DoctorAction";
+import { useSelector, useDispatch } from "react-redux";
+import {GetDoctors} from "../redux/actions/DoctorAction"
 
 
 
 
 function DoctorScreen({ navigation}) {
+  // const [Data, setData] = useState([]);
 
+  const [data, setData] = useState([]);
+
+  const CreateDoctor = useSelector((state) => state.doctor);
+  const dispatch = useDispatch();
+
+  //console.debug(CreateDoctor.data.length);  
+  if(CreateDoctor.data !== null && CreateDoctor.data !== undefined && data !== CreateDoctor.data){
+    console.debug("CreateDoctor.data");
+    setData(CreateDoctor.data);
+  }
+
+
+  useEffect(() =>{
+    console.debug('dispatching action');
+    dispatch(GetDoctors());
+ 
+   }, []);
  
   return (
     <SafeAreaView style={{ marginHorizontal: 10 }}>
@@ -67,16 +86,24 @@ function DoctorScreen({ navigation}) {
           </Text>
           </View>
           {/* doctorsProfile */}
-          <View>
-            {
-              
-                  <Doctor />
-               
+          <View >
+          {data.map((x, key)=>{
+              return(
+                <View style={styles.create} >
+                <Text>{x.firstName}</Text>
+                <Text>{x.lastName}</Text>
+                <Text>{x.spacialization}</Text>
+                <Text>{x.number}</Text>
+                <Text>{x.email}</Text>
+                <Text>{x.age}</Text>
+                </View>
+              )
+            })
+                  // <Doctor />
+                  
             }
-            
-
-           
           </View>
+          
       </ScrollView>
     </SafeAreaView>
   );
@@ -106,6 +133,10 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingLeft: 6,
   },
+  create:{
+    borderBottomWidth: 0.5,
+    marginLeft: 20
+  }
 
 
    

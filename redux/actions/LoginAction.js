@@ -34,6 +34,7 @@ export const Login = (username, password) => (dispatch) => {
     .post(login, { username: username, password: password })
     .then((result) => {
       dispatch(authSuccess(result.data));
+      console.debug(result);
     })
     .catch((error) => {
       dispatch(authError(error.response.data));

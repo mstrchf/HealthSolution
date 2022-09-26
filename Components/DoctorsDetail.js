@@ -55,26 +55,27 @@ function DoctorsDetail({ navigation }) {
     // console.log(age);
     // console.log(email);
     // console.log(number);
-    dispatch(AddDoctor(firstName, lastName, spacialization, email, number ,age))
-    // navigation.navigate('Book')
+    dispatch(AddDoctor(firstName, lastName, spacialization, number, email,age))
+
+    if( CreateDoctor.CurrentDoctor){
+      navigation.navigate('Book')
+    }
+    
   };
 
-  // useEffect(() =>{
-  //   AddDoctor
-  //   // navigation.navigate('Book')
-  // }, [])
+ 
+  useEffect(() =>{
+    AddDoctor
+  }, [])
 
   //Create Doctor
-  if(CreateDoctor.CurrentDoctor !== ""  && 
-      CreateDoctor.CurrentDoctor !== null &&
-      CreateDoctor.CurrentDoctor !== undefined)
-  {
-       CreateDoctor.CurrentDoctor
-  }
+  // if(CreateDoctor.CurrentDoctor !== ""  && 
+  //     CreateDoctor.CurrentDoctor !== null &&
+  //     CreateDoctor.CurrentDoctor !== undefined)
+  // {
+  //      CreateDoctor.CurrentDoctor
+  // }
 
- 
-
-  
 
   return (
     <SafeAreaView>

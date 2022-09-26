@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
     paddingTop: 80
     
   },
-  background:{
-    backgroundColor: 'grey',
-    width:300,
-    height:400,
-    borderRadius:15,
-  },
+  // background:{
+  //   backgroundColor: 'grey',
+  //   width:300,
+  //   height:400,
+  //   borderRadius:15,
+  // },
   profile:{
     alignItems:"center",
     padding: 30

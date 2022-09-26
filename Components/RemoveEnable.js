@@ -22,10 +22,12 @@ function RemoveEnable({ navigation }) {
       setChooseData(data);
     };
     //Delete
-    const HandleDelete = (id) =>{
-      if(window.confirm('are you sure you want to delete this doctor')){
-        dispatch(DeleteDoctor(id))
-      }
+    const HandleDelete = () =>{
+     
+      
+      // if(window.confirm('are you sure you want to delete this doctor')){
+      //   dispatch(DeleteDoctor(id))
+      // }
     }
     // if(deleteDoctor.CurrentDoctor){
     //   deleteDoctor.CurrentDoctor('');
@@ -67,7 +69,8 @@ function RemoveEnable({ navigation }) {
 
            {/* button */}
              <View style={styles.button}>
-                <TouchableOpacity onPress={() => HandleDelete(deleteDoctor.id)}>
+                {/* <TouchableOpacity onPress={() => HandleDelete(deleteDoctor.id)}> */}
+                <TouchableOpacity onPress={ HandleDelete}>
                   <Text style={styles.remove}>Remove</Text>
                 </TouchableOpacity>
 

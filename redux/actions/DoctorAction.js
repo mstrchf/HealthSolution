@@ -1,5 +1,6 @@
 //ACTION TYPE
 export const ADD_DOCTOR = "ADD_DOCTOR";
+export const GET_ALL_DOCTORS = "GET_ALL_DOCTORS";
 export const ADD_FAIL = "ADD_FAIL";
 export const DELETE_DOCTOR = "DELETE_DOCTOR";
 export const DELETE_FAIL = "DELETE_FAIL";
@@ -8,6 +9,7 @@ export const UPDATE_FAIL = "UPDATE_FAIL";
 
 import axios, { Axios } from "axios";
 const Add = "http://172.23.45.149:7222/api/Doctors";
+const GetAll =  "http://172.23.45.149:7222/api/Doctors";
 const Delete = "http://172.23.45.149:7222/api/Doctors/{id}";
 const Update = "http://172.23.45.149:7222/api/Doctors/{id}";
 
@@ -16,6 +18,11 @@ const addDoctor = (NewDoctor) => ({
   type: ADD_DOCTOR,
   payload: NewDoctor,
 });
+
+const getAllDoctors = (Doctors) =>({
+  type: GET_ALL_DOCTORS,
+  payload: Doctors,
+})
 
 const addFail = (payload) => ({
   type: ADD_FAIL,
@@ -40,6 +47,8 @@ const updateFail = (payload) => ({
   payload,
 });
 
+
+//add doctor
 export const AddDoctor =
   (Firstname, Lastname, Specialization, Phonenumber, Email,Age) => (dispatch) => {
     dispatch({ type: ADD_DOCTOR });
@@ -62,6 +71,24 @@ export const AddDoctor =
         console.log("error from add");
       });
   };
+
+
+  // get a doctor
+  export const GetDoctors = () => (dispatch) => {
+    console.debug('running action getdoctors');
+      dispatch({ type: GET_ALL_DOCTORS });
+      return axios
+        .get(GetAll, )
+        .then((data) => {
+          dispatch(getAllDoctors(data.data));
+          //console.log(data.data);
+        })
+        .catch((error) => {
+          console.debug(error)
+        });
+
+  }
+
 
 export const DeleteDoctor = (id) => (dispatch) => {
   dispatch({ type: DELETE_DOCTOR });
