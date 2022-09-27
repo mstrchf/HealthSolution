@@ -71,7 +71,7 @@ function Book({ navigation }) {
               onPress={() => navigation.navigate("Doctors Account")}
             />
           </View>
-          <Text>Please Fill Out The ForBelow To Make An </Text>
+          <Text>Please Fill Out The Form Below To Make An </Text>
           <Text style={{ paddingBottom: 30 }}>Appointment</Text>
         </View>
         {/* inputs */}

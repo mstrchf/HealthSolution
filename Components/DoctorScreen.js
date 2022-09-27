@@ -14,15 +14,18 @@ import {
   FontAwesome5,
 } from "@expo/vector-icons";
 import React, { useState,useEffect} from "react";
-import Doctor from "./Doctor";
+// import Doctor from "./Doctor";
 import { useSelector, useDispatch } from "react-redux";
 import {GetDoctors} from "../redux/actions/DoctorAction"
+import { useNavigation } from '@react-navigation/native';
+  import DoctorsModal from "./DoctorsModal";
+
 
 
 
 
 function DoctorScreen({ navigation}) {
-  // const [Data, setData] = useState([]);
+
 
   const [data, setData] = useState([]);
 
@@ -41,6 +44,22 @@ function DoctorScreen({ navigation}) {
     dispatch(GetDoctors());
  
    }, []);
+
+   
+  //  
+  
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [chooseData, setChooseData] = useState();
+  
+  
+    const changeModalVisible = (bool) => {
+      setIsModalVisible(bool);
+    };
+    
+    // const setData = (data) => {
+    //   setChooseData(data);
+    // };
+
  
   return (
     <SafeAreaView style={{ marginHorizontal: 10 }}>
@@ -51,9 +70,23 @@ function DoctorScreen({ navigation}) {
           <TouchableOpacity onPress={() => navigation.navigate("user")}>
             <Ionicons name="menu" size={35} color="black" />
           </TouchableOpacity>
-          <Text style={{ fontSize: 20, fontWeight: "800", marginRight: 100 }}>
+          <Text style={{ fontSize: 20, fontWeight: "800",  }}>
             Find Your Doctor
           </Text>
+
+          {/*  */}
+
+          <TouchableOpacity onPress={() => navigation.navigate("entry")}>
+              <Text
+                style={{
+                  color:"#41c1f9" ,
+                  fontWeight: "800",
+                  fontSize: 20
+                }}
+              >
+                Add
+              </Text>
+            </TouchableOpacity>
         </View>
 
         {/* icons on specializations */}
@@ -87,20 +120,54 @@ function DoctorScreen({ navigation}) {
           </View>
           {/* doctorsProfile */}
           <View >
-          {data.map((x, key)=>{
+          {data.map((x)=>{
               return(
-                <View style={styles.create} >
-                <Text>{x.firstName}</Text>
+                <View >
+              <View style={styles.create}>
+                <TouchableOpacity onPress={() => changeModalVisible(true)}  >
+                <Image source={require('../assets/cute.webp')}  style={{width:50,height:50,borderRadius:50,marginTop: 60}}/>
+                </TouchableOpacity>
+                <View style={styles.text}>
+                <TouchableOpacity onPress={() => changeModalVisible(true)} >
+                <Text style={{fontWeight: 'bold'}}>{x.firstName}</Text>
                 <Text>{x.lastName}</Text>
                 <Text>{x.spacialization}</Text>
                 <Text>{x.number}</Text>
                 <Text>{x.email}</Text>
                 <Text>{x.age}</Text>
+                <Text style={styles.BN}>Book Now</Text>
+                </TouchableOpacity>
+
+
+              {/* model */}
+                <Modal
+                transparent={true}
+                animationType="fade"
+                visible={isModalVisible}
+                nRequestClose={() => changeModalVisible(false)}
+              >
+                  <DoctorsModal
+                  changeModalVisible={changeModalVisible}
+                  setData={setData}
+                />
+               </Modal>
+                </View>
+                </View>
+
+
+           {/* button */}
+            <View style={styles.button}>
+              <TouchableOpacity>
+                <Text style={styles.remove}>Remove</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity  onPress={() => navigation.navigate("entry")}>
+                <Text   style={styles.update}>Update</Text>
+              </TouchableOpacity>
+            </View>
                 </View>
               )
             })
-                  // <Doctor />
-                  
             }
           </View>
           
@@ -126,15 +193,40 @@ const styles = StyleSheet.create({
   },
  
   book:{
-   
     fontWeight: "800",
     fontSize: 17,
     paddingBottom: 30,
     paddingTop: 30,
     paddingLeft: 6,
   },
+  BN:{
+    fontWeight: '700',
+    
+  },
+  update:{
+        color: "#41c1f9", 
+        fontWeight: "800",
+         marginRight: 20,
+         marginTop: 10
+      },
+  remove:{
+            marginTop: 10,
+            color: "#41c1f9", 
+             fontWeight: "800",
+              marginLeft: 40
+        
+          },
+  button:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderTopWidth: 0.5
+  },
   create:{
-    borderBottomWidth: 0.5,
+    // backgroundColor: 'red',
+    flexDirection: 'row'
+
+  },
+  text:{
     marginLeft: 20
   }
 

@@ -15,7 +15,7 @@ function DoctorsModal(props) {
       props.changeModalVisible(bool);
       props.setData(data);
       // navigation.navigate('user');
-      
+
     }
     
   
@@ -36,7 +36,7 @@ function DoctorsModal(props) {
         <View style={styles.button} >
         {/*cancelbutton  */}
           <TouchableOpacity 
-          onPress={() => closeModal(false, "Cancel")}>
+                 onPress={() => closeModal(false, "Cancel")}>
             <Text  style={{fontWeight: 'bold', color: '#41c1f9'}}>Cancel</Text>
           </TouchableOpacity>
           {/*Continuebutton */}
@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
     paddingTop: 80
     
   },
-  // background:{
-  //   backgroundColor: 'grey',
-  //   width:300,
-  //   height:400,
-  //   borderRadius:15,
-  // },
+  background:{
+    backgroundColor: 'grey',
+    width:300,
+    height:400,
+    borderRadius:15,
+  },
   profile:{
     alignItems:"center",
     padding: 30

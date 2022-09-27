@@ -7,7 +7,7 @@ import {
   ScrollView,
   ImageBackground,
 } from "react-native";
-import RemoveEnable from "./RemoveEnable";
+// import RemoveEnable from "./RemoveEnable";
 function Adminisrator({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
@@ -40,7 +40,7 @@ function Adminisrator({ navigation }) {
         </View>
         {/* list of doctors */}
         <View>
-          <RemoveEnable />
+          {/* <RemoveEnable /> */}
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -49,12 +49,6 @@ function DoctorsDetail({ navigation }) {
 
   //submitButton
   const Complete = () => {
-    // console.log(firstName);
-    // console.log(lastName);
-    // console.log(spacialization);
-    // console.log(age);
-    // console.log(email);
-    // console.log(number);
     dispatch(AddDoctor(firstName, lastName, spacialization, number, email,age))
 
     if( CreateDoctor.CurrentDoctor){
