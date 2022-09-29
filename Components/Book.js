@@ -8,60 +8,59 @@ import {
   ScrollView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import {useState} from 'react';
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+// import { Book } from "../redux/actions/BookingAction";
 
 function Book({ navigation }) {
+  // const UserBook = useSelector((state) => state.users);
+  // const dispatch = useDispatch;
 
-  const [fullname , setFullName] = useState('');
-  const [lastname, setLastName] = useState('');
-  const [day , setDay] = useState('');
-  const [phonenumber, setPhoneNumber] = useState('');
-  const [time, setTime] = useState('');
-  const [details, setDetails] = useState('');
+  const [fullname, setFullName] = useState("");
+  const [lastname, setLastName] = useState("");
+  const [day, setDay] = useState("");
+  const [phonenumber, setPhoneNumber] = useState("");
+  const [time, setTime] = useState("");
+  const [details, setDetails] = useState("");
 
-  const HandleFullName = (text) =>{
-    setFullName(text)
+  const HandleFullName = (text) => {
+    setFullName(text);
   };
 
-  const HandleLastName = (text) =>{
-    setLastName(text)
+  const HandleLastName = (text) => {
+    setLastName(text);
   };
 
-  const HandleDay = (text) =>{
-    setDay(text)
+  const HandleDay = (text) => {
+    setDay(text);
   };
 
-  const HandleNumber = (text) =>{
-    setPhoneNumber(text)
+  const HandleNumber = (text) => {
+    setPhoneNumber(text);
   };
 
-  const HandleTime =(text) =>{
-    setTime(text)
+  const HandleTime = (text) => {
+    setTime(text);
   };
 
-  const HandleDetails = (text) =>{
-    setDetails(text)
-  }
+  const HandleDetails = (text) => {
+    setDetails(text);
+  };
 
-
-
-
-  const HandleSubmit = () =>{
-    console.log(fullname)
-    console.log(lastname)
-    console.log(day)
-    console.log(phonenumber)
-    console.log(time)
-    console.log(details)
- 
-
-  }
+  const HandleSubmit = () => {
+    console.log(fullname);
+    console.log(lastname);
+    console.log(day);
+    console.log(phonenumber);
+    console.log(time);
+    console.log(details);
+  };
   return (
     <SafeAreaView style={{ marginHorizontal: 10, flex: 1 }}>
       <ScrollView>
         <View style={styles.headertext}>
           <View style={styles.header}>
-            <Text style={{ fontWeight: "bold", fontSize: 18, }}>
+            <Text style={{ fontWeight: "bold", fontSize: 18 }}>
               Book an Appointment
             </Text>
             <AntDesign
@@ -76,12 +75,44 @@ function Book({ navigation }) {
         </View>
         {/* inputs */}
         <View>
-          <TextInput placeholder="FullName" value={fullname} onChangeText={HandleFullName} style={styles.input} />
-          <TextInput placeholder="LastName" value={lastname} onChangeText={HandleLastName} style={styles.input} />
-          <TextInput placeholder="Day" value={day} onChangeText={HandleDay}   style={styles.input} />
-          <TextInput placeholder="Phonenumber" value={phonenumber} onChangeText={HandleNumber} style={styles.input} />
-          <TextInput placeholder="Time" value={time} onChangeText={HandleTime} style={styles.input} />
-          <TextInput placeholder="Details" value={details} onChangeText={HandleDetails} multiline={true} numberOfLines={5} style={styles.input} />
+          <TextInput
+            placeholder="FullName"
+            value={fullname}
+            onChangeText={HandleFullName}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="LastName"
+            value={lastname}
+            onChangeText={HandleLastName}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Day"
+            value={day}
+            onChangeText={HandleDay}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Phonenumber"
+            value={phonenumber}
+            onChangeText={HandleNumber}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Time"
+            value={time}
+            onChangeText={HandleTime}
+            style={styles.input}
+          />
+          <TextInput
+            placeholder="Details"
+            value={details}
+            onChangeText={HandleDetails}
+            multiline={true}
+            numberOfLines={5}
+            style={styles.input}
+          />
         </View>
 
         {/* submitbutton */}
