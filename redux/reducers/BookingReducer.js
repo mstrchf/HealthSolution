@@ -1,7 +1,7 @@
 import { BOOKING_SUCCESS, BOOKING_FAIL } from "../actions/BookingAction";
 
 const InitialBooing = {
-  Users: null,
+   CurrentBook: null,
 };
 
 function Book(state = InitialBooing, action) {
@@ -9,7 +9,7 @@ function Book(state = InitialBooing, action) {
     case BOOKING_SUCCESS:
       return {
         ...state,
-        Users: action.payload,
+            CurrentBook: action.payload,
       };
     default:
       return state;

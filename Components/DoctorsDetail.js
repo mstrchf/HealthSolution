@@ -62,15 +62,7 @@ function DoctorsDetail({ navigation }) {
     AddDoctor
   }, [])
 
-  //Create Doctor
-  // if(CreateDoctor.CurrentDoctor !== ""  && 
-  //     CreateDoctor.CurrentDoctor !== null &&
-  //     CreateDoctor.CurrentDoctor !== undefined)
-  // {
-  //      CreateDoctor.CurrentDoctor
-  // }
-
-
+  
   return (
     <SafeAreaView>
       <ImageBackground

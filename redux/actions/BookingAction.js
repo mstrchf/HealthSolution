@@ -12,16 +12,17 @@ const BFail = () => ({
   type: BOOKING_FAIL,
 });
 
-export const Book = () => (dispatch) => {
+export const AppiontBook = (Day, Phonenumber, Time, Details) => (dispatch) => {
   dispatch({ type: BOOKING_SUCCESS });
   return axios
-    .post(book, { Firstname, Lastname, Day, Phonenumber, Time, Details })
+    .post(book, { Day, Phonenumber, Time, Details })
     .then((Response) => {
       dispatch(BSuccessful(Response.data));
-      console, debug(Response);
+      console.log('your book does not work')
+      console.debug(Response);
     })
     .catch((error) => {
       dispatch(BFail(error));
-      console.debug(error.Response.data);
+      console.debug(error.response.data);
     });
 };

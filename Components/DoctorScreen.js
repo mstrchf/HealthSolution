@@ -120,10 +120,10 @@ function DoctorScreen({ navigation}) {
           </View>
           {/* doctorsProfile */}
           <View >
-          {data.map((x)=>{
+          {data.map((x,key)=>{
               return(
                 <View >
-              <View style={styles.create}>
+              <View  style={styles.create}>
                 <TouchableOpacity onPress={() => changeModalVisible(true)}  >
                 <Image source={require('../assets/cute.webp')}  style={{width:50,height:50,borderRadius:50,marginTop: 60}}/>
                 </TouchableOpacity>

@@ -8,28 +8,31 @@ import {
   ScrollView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { useState } from "react";
+import DatePicker from 'react-native-date-picker';
+import { useState ,useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import { Book } from "../redux/actions/BookingAction";
+import {AppiontBook} from '../redux/actions/BookingAction';
+
+
 
 function Book({ navigation }) {
-  // const UserBook = useSelector((state) => state.users);
-  // const dispatch = useDispatch;
+  const UserBook = useSelector((state) => state.users);
+  const dispatch = useDispatch();
 
-  const [fullname, setFullName] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [day, setDay] = useState("");
+  // const [fullname, setFullName] = useState("");
+  // const [lastname, setLastName] = useState("");
+  const [date, setDate] = useState(new Date());
   const [phonenumber, setPhoneNumber] = useState("");
   const [time, setTime] = useState("");
   const [details, setDetails] = useState("");
 
-  const HandleFullName = (text) => {
-    setFullName(text);
-  };
+  // const HandleFullName = (text) => {
+  //   setFullName(text);
+  // };
 
-  const HandleLastName = (text) => {
-    setLastName(text);
-  };
+  // const HandleLastName = (text) => {
+  //   setLastName(text);
+  // };
 
   const HandleDay = (text) => {
     setDay(text);
@@ -48,13 +51,17 @@ function Book({ navigation }) {
   };
 
   const HandleSubmit = () => {
-    console.log(fullname);
-    console.log(lastname);
-    console.log(day);
-    console.log(phonenumber);
-    console.log(time);
-    console.log(details);
+    dispatch(AppiontBook(day,phonenumber,time,details))
+    // console.log(day,phonenumber,time,details)
   };
+  
+
+  useEffect(()=> {
+    // AppiontBook
+    console.log('booked')
+  }, [])
+
+  
   return (
     <SafeAreaView style={{ marginHorizontal: 10, flex: 1 }}>
       <ScrollView>
@@ -75,24 +82,40 @@ function Book({ navigation }) {
         </View>
         {/* inputs */}
         <View>
-          <TextInput
+          {/* <TextInput
             placeholder="FullName"
-            value={fullname}
+            value={Fullname}
             onChangeText={HandleFullName}
             style={styles.input}
-          />
-          <TextInput
+          /> */}
+          {/* <TextInput
             placeholder="LastName"
-            value={lastname}
+            value={Lastname}
             onChangeText={HandleLastName}
             style={styles.input}
-          />
-          <TextInput
+          /> */}
+          {/* <TextInput
             placeholder="Day"
             value={day}
             onChangeText={HandleDay}
             style={styles.input}
-          />
+          /> */}
+          <View>
+            <DatePicker
+               modal
+               date={date}
+               onConfirm={(date) =>{
+                setOpen(false)
+                setDate(date)
+               }}
+               onCancel={() =>{
+                setOpen(false)
+               }}
+              // date={date} 
+              // onDateChange={setDate}
+            />
+          </View>
+      
           <TextInput
             placeholder="Phonenumber"
             value={phonenumber}
@@ -150,5 +173,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 30,
   },
+
 });
 export default Book;
