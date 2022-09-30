@@ -8,31 +8,25 @@ import {
   ScrollView,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import DatePicker from 'react-native-date-picker';
 import { useState ,useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {AppiontBook} from '../redux/actions/BookingAction';
+import { useRoute } from "@react-navigation/native";
 
 
 
-function Book({ navigation }) {
+function Book({ navigation}) {
   const UserBook = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
-  // const [fullname, setFullName] = useState("");
-  // const [lastname, setLastName] = useState("");
-  const [date, setDate] = useState(new Date());
+ 
+  const [day, setDay] = useState("")
   const [phonenumber, setPhoneNumber] = useState("");
   const [time, setTime] = useState("");
   const [details, setDetails] = useState("");
-
-  // const HandleFullName = (text) => {
-  //   setFullName(text);
-  // };
-
-  // const HandleLastName = (text) => {
-  //   setLastName(text);
-  // };
+  const route = useRoute();
+ 
+ 
 
   const HandleDay = (text) => {
     setDay(text);
@@ -51,17 +45,17 @@ function Book({ navigation }) {
   };
 
   const HandleSubmit = () => {
-    dispatch(AppiontBook(day,phonenumber,time,details))
-    // console.log(day,phonenumber,time,details)
+    console.debug("this is the id:")
+    console.debug(route.params.id);
+    dispatch(AppiontBook(day,phonenumber,time,details, route.params.id))
+    console.log('booked')
+    if(UserBook.CurrentBook){
+      navigation.navigate('Doctors Account');
+    }
   };
   
 
-  useEffect(()=> {
-    // AppiontBook
-    console.log('booked')
-  }, [])
 
-  
   return (
     <SafeAreaView style={{ marginHorizontal: 10, flex: 1 }}>
       <ScrollView>
@@ -82,40 +76,14 @@ function Book({ navigation }) {
         </View>
         {/* inputs */}
         <View>
-          {/* <TextInput
-            placeholder="FullName"
-            value={Fullname}
-            onChangeText={HandleFullName}
-            style={styles.input}
-          /> */}
-          {/* <TextInput
-            placeholder="LastName"
-            value={Lastname}
-            onChangeText={HandleLastName}
-            style={styles.input}
-          /> */}
-          {/* <TextInput
+         
+          <TextInput
             placeholder="Day"
             value={day}
             onChangeText={HandleDay}
             style={styles.input}
-          /> */}
-          <View>
-            <DatePicker
-               modal
-               date={date}
-               onConfirm={(date) =>{
-                setOpen(false)
-                setDate(date)
-               }}
-               onCancel={() =>{
-                setOpen(false)
-               }}
-              // date={date} 
-              // onDateChange={setDate}
-            />
-          </View>
-      
+          />
+
           <TextInput
             placeholder="Phonenumber"
             value={phonenumber}

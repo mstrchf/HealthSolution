@@ -2,20 +2,43 @@ import {
   TouchableOpacity,
   StyleSheet,
   View,
-  Dimensions,
   Text,
   Image
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import {GetDoctors} from "../redux/actions/DoctorAction";
+import { useSelector, useDispatch } from "react-redux";
+import {useState, useEffect} from 'react';
+
+
 
 function DoctorsModal(props) {
   const navigation = useNavigation();
+
+  const CreateDoctor = useSelector((state) => state.doctor);
+  const dispatch = useDispatch();
+
+  //console.debug(props.id);
+
+
+
   
     closeModal = (bool, data) => {
       props.changeModalVisible(bool);
       props.setData(data);
-      // navigation.navigate('user');
+    }
+    
+    
 
+    useEffect(() =>{
+      dispatch(GetDoctors());
+     }, []);
+
+    const HandleCountinue = () =>{
+      if(CreateDoctor.data){
+      navigation.navigate('user', { id: props.id})
+      }
+     
     }
     
   
@@ -28,7 +51,8 @@ function DoctorsModal(props) {
           <Text style={{color: 'white', paddingBottom:10}} >Dr. Ebrima Sow</Text>
           <Text style={{color: 'white', paddingBottom:10}}>Fajara Hospital</Text>
           <Text style={{color: 'white', paddingBottom:10}}>8:00AM TO 5:00PM</Text>
-          <Text style={{color: 'white', paddingTop:22}}>Continue For Your Appointment Booking</Text>
+          <Text style={{color: 'white', paddingTop:22,}}>Continue For Your Appointment </Text>
+          <Text style={{alignSelf: 'center', color: 'white'}}>Booking</Text>
           </View>
     
         </View>
@@ -41,7 +65,8 @@ function DoctorsModal(props) {
           </TouchableOpacity>
           {/*Continuebutton */}
           <TouchableOpacity
-           onPress={() => navigation.navigate('user')}           
+          //  onPress={() => navigation.navigate('user')}
+          onPress={HandleCountinue}           
            >
             <Text style={{fontWeight: 'bold', color: '#41c1f9'}}>Continue</Text>
           </TouchableOpacity>

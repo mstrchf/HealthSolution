@@ -16,9 +16,8 @@ import {
 import React, { useState,useEffect} from "react";
 // import Doctor from "./Doctor";
 import { useSelector, useDispatch } from "react-redux";
-import {GetDoctors} from "../redux/actions/DoctorAction"
-import { useNavigation } from '@react-navigation/native';
-  import DoctorsModal from "./DoctorsModal";
+import {GetDoctors} from "../redux/actions/DoctorAction";
+import DoctorsModal from "./DoctorsModal";
 
 
 
@@ -34,13 +33,13 @@ function DoctorScreen({ navigation}) {
 
   //console.debug(CreateDoctor.data.length);  
   if(CreateDoctor.data !== null && CreateDoctor.data !== undefined && data !== CreateDoctor.data){
-    console.debug("CreateDoctor.data");
+    // console.debug("CreateDoctor.data");
     setData(CreateDoctor.data);
   }
 
 
   useEffect(() =>{
-    console.debug('dispatching action');
+    // console.debug('dispatching action');
     dispatch(GetDoctors());
  
    }, []);
@@ -50,10 +49,12 @@ function DoctorScreen({ navigation}) {
   
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [chooseData, setChooseData] = useState();
+    const [selectedDoc, setSelectedDoc] = useState();
   
   
-    const changeModalVisible = (bool) => {
+    const changeModalVisible = (bool, id) => {
       setIsModalVisible(bool);
+      setSelectedDoc(id);
     };
     
     // const setData = (data) => {
@@ -120,16 +121,16 @@ function DoctorScreen({ navigation}) {
           </View>
           {/* doctorsProfile */}
           <View >
-          {data.map((x,key)=>{
+          {data.map((x)=>{
               return(
-                <View >
+              <View >
               <View  style={styles.create}>
-                <TouchableOpacity onPress={() => changeModalVisible(true)}  >
+                <TouchableOpacity onPress={() => changeModalVisible(true, x.id)}  >
                 <Image source={require('../assets/cute.webp')}  style={{width:50,height:50,borderRadius:50,marginTop: 60}}/>
                 </TouchableOpacity>
                 <View style={styles.text}>
-                <TouchableOpacity onPress={() => changeModalVisible(true)} >
-                <Text style={{fontWeight: 'bold'}}>{x.firstName}</Text>
+                <TouchableOpacity onPress={() => changeModalVisible(true, x.id)} >
+                <Text  >{x.firstName}</Text>
                 <Text>{x.lastName}</Text>
                 <Text>{x.spacialization}</Text>
                 <Text>{x.number}</Text>
@@ -146,7 +147,7 @@ function DoctorScreen({ navigation}) {
                 visible={isModalVisible}
                 nRequestClose={() => changeModalVisible(false)}
               >
-                  <DoctorsModal
+                  <DoctorsModal id={selectedDoc}
                   changeModalVisible={changeModalVisible}
                   setData={setData}
                 />

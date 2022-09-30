@@ -12,10 +12,10 @@ const BFail = () => ({
   type: BOOKING_FAIL,
 });
 
-export const AppiontBook = (Day, Phonenumber, Time, Details) => (dispatch) => {
+export const AppiontBook = (Day, Phonenumber, Time, Details, id) => (dispatch) => {
   dispatch({ type: BOOKING_SUCCESS });
   return axios
-    .post(book, { Day, Phonenumber, Time, Details })
+    .post(book, { Day, Phonenumber, Time, Details, DoctorId: id})
     .then((Response) => {
       dispatch(BSuccessful(Response.data));
       console.log('your book does not work')
